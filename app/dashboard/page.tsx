@@ -1,179 +1,87 @@
-"use client";
+import SalesChart from "@/components/dashboard/SalesChart";
+import EmployeeRanking from "@/components/dashboard/EmployeeRanking";
+import ClientInsights from "@/components/dashboard/ClientInsights";
+import { DollarSign, Percent, Users, Activity } from "lucide-react";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, ArrowDownRight, PackageSearch, Activity, Database, AlertCircle } from "lucide-react";
-
-export default function Dashboard() {
-    const stats = [
-        { title: "Total Revenue", value: "$45,231.89", trend: "+20.1%", isPositive: true },
-        { title: "Active Inventory", value: "2,350", trend: "+12.5%", isPositive: true },
-        { title: "System Intrusions Blocked", value: "1,429", trend: "0.0%", isPositive: true },
-        { title: "Low Stock Items", value: "12", trend: "-2.4%", isPositive: false },
-    ];
-
-    const recentProducts = [
-        { id: "PROD-1029", name: "Enterprise Server Rack", stock: 45, status: "Healthy", price: "$1,200.00" },
-        { id: "PROD-1030", name: "Security Gateway v4", stock: 12, status: "Warning", price: "$450.00" },
-        { id: "PROD-1031", name: "Biometric Scanner", stock: 89, status: "Healthy", price: "$299.00" },
-        { id: "PROD-1032", name: "Backup Power Unit", stock: 2, status: "Critical", price: "$850.00" },
-        { id: "PROD-1033", name: "Network Switch 48-port", stock: 34, status: "Healthy", price: "$620.00" },
-    ];
-
+export default function DashboardPage() {
     return (
-        <div className="max-w-7xl mx-auto space-y-8">
-            {/* Info banner */}
-            <div className="bg-brand-500/10 border border-brand-500/30 rounded-lg p-4 flex gap-3 text-brand-500">
-                <Activity className="h-5 w-5 shrink-0 mt-0.5" />
-                <div>
-                    <h3 className="font-semibold">Live System Demonstration</h3>
-                    <p className="text-sm opacity-80 mt-1">This is a showcase of the internal dashboard interface that your software customers will experience. Built for clarity, speed, and real-time data monitoring.</p>
+        <div className="relative text-slate-200 font-sans">
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
+
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 z-10 relative">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <h1 className="text-3xl md:text-4xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 mb-2">
+                            Command Center
+                        </h1>
+                        <p className="text-slate-400">Inteligencia de ventas y predicciones impulsadas por IA.</p>
+                    </div>
+                    <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 text-blue-400 text-sm font-semibold">
+                        <Activity className="w-4 h-4 animate-pulse" />
+                        IA Predictive Engine: ONLINE
+                    </div>
                 </div>
-            </div>
 
-            {/* KPI Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {stats.map((stat, i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="bg-card border border-border rounded-xl p-6 shadow-sm"
-                    >
-                        <h3 className="text-sm font-medium text-muted-foreground">{stat.title}</h3>
-                        <div className="mt-2 flex items-baseline justify-between">
-                            <span className="text-2xl font-outfit font-bold">{stat.value}</span>
-                            <span className={`text-xs font-semibold flex items-center ${stat.isPositive ? 'text-emerald-500' : 'text-red-500'}`}>
-                                {stat.isPositive ? <ArrowUpRight className="h-3 w-3 mr-1" /> : <ArrowDownRight className="h-3 w-3 mr-1" />}
-                                {stat.trend}
-                            </span>
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Sales Chart Mockup */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="lg:col-span-2 bg-card border border-border rounded-xl p-6"
-                >
-                    <div className="flex justify-between items-center mb-6">
-                        <h3 className="font-outfit font-semibold text-lg flex items-center gap-2">
-                            <Database className="h-5 w-5 text-brand-500" />
-                            Sales & Inventory Trajectory
-                        </h3>
-                        <select className="bg-muted border border-border rounded-md text-sm px-3 py-1 text-foreground">
-                            <option>Last 7 Days</option>
-                            <option>Last 30 Days</option>
-                            <option>Year to Date</option>
-                        </select>
-                    </div>
-
-                    <div className="h-[250px] w-full flex items-end justify-between gap-2 px-2 pb-6 pt-10 border-b border-l border-border relative">
-                        {/* Chart Grid Lines */}
-                        <div className="absolute top-0 w-full border-b border-border/30"></div>
-                        <div className="absolute top-1/2 w-full border-b border-border/30"></div>
-
-                        {/* Animated Bars */}
-                        {[40, 70, 45, 90, 65, 85, 100].map((height, i) => (
-                            <div key={i} className="w-full flex justify-center group relative h-full items-end">
-                                <motion.div
-                                    initial={{ height: 0 }}
-                                    animate={{ height: `${height}%` }}
-                                    transition={{ duration: 1, delay: 0.5 + (i * 0.1) }}
-                                    className="w-full max-w-[40px] bg-brand-500/80 rounded-t-sm group-hover:bg-brand-500 transition-colors"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                    <div className="flex justify-between px-2 mt-4 text-xs text-muted-foreground">
-                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-                    </div>
-                </motion.div>
-
-                {/* Action Panel / Alerts */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 }}
-                    className="bg-card border border-border rounded-xl p-6"
-                >
-                    <h3 className="font-outfit font-semibold text-lg flex items-center gap-2 mb-6">
-                        <AlertCircle className="h-5 w-5 text-brand-500" />
-                        System Alerts
-                    </h3>
-                    <div className="space-y-4">
-                        <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-md">
-                            <div className="font-medium text-red-500 text-sm">Critical Inventory Load</div>
-                            <div className="text-xs text-muted-foreground mt-1">Backup Power Unit dropping below threshold of 5 units. Recommended action: Restock immediately.</div>
-                        </div>
-                        <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-md">
-                            <div className="font-medium text-yellow-500 text-sm">Update Required</div>
-                            <div className="text-xs text-muted-foreground mt-1">Server architecture node v1.4 requires a scheduled reboot tonight at 03:00 AM UTC.</div>
-                        </div>
-                        <div className="p-3 bg-brand-500/10 border border-brand-500/20 rounded-md">
-                            <div className="font-medium text-brand-500 text-sm">Backup Successful</div>
-                            <div className="text-xs text-muted-foreground mt-1">Annual cloud off-site backup completed with 0 errors. SHA-256 hash verified.</div>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-
-            {/* Product Control Table */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="bg-card border border-border rounded-xl overflow-hidden"
-            >
-                <div className="p-6 border-b border-border flex justify-between items-center bg-muted/30">
-                    <h3 className="font-outfit font-semibold text-lg flex items-center gap-2">
-                        <PackageSearch className="h-5 w-5 text-brand-500" />
-                        Product Control Interface
-                    </h3>
-                    <button className="text-sm bg-foreground text-background px-4 py-2 rounded-md hover:bg-foreground/90 transition-colors font-medium">
-                        + New Item
-                    </button>
+                {/* Global Stats Matrix */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <StatCard title="Ingresos Anuales (YTD)" value="$2.4M" target="vs $1.8M (2025)" icon={DollarSign} trend="+33%" color="text-emerald-400" bg="bg-emerald-400/10" shadow="shadow-[0_0_30px_-5px_rgba(16,185,129,0.15)]" />
+                    <StatCard title="Pipeline Proyectado" value="$850K" target="Q3 - Q4 2026" icon={Activity} trend="+12%" color="text-blue-400" bg="bg-blue-400/10" shadow="shadow-[0_0_30px_-5px_rgba(59,130,246,0.15)]" />
+                    <StatCard title="Win Rate Global" value="48.5%" target="Promedio industria: 32%" icon={Percent} trend="+5.2%" color="text-purple-400" bg="bg-purple-400/10" shadow="shadow-[0_0_30px_-5px_rgba(168,85,247,0.15)]" />
+                    <StatCard title="Clientes Activos" value="142" target="9 en riesgo de fuga" icon={Users} trend="-2" color="text-rose-400" bg="bg-rose-400/10" shadow="shadow-[0_0_30px_-5px_rgba(244,63,94,0.15)]" isNegative />
                 </div>
-                <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left">
-                        <thead className="text-xs text-muted-foreground uppercase bg-muted/50 border-b border-border">
-                            <tr>
-                                <th className="px-6 py-4">Product ID</th>
-                                <th className="px-6 py-4">Item Name</th>
-                                <th className="px-6 py-4">Available Stock</th>
-                                <th className="px-6 py-4">Security Status</th>
-                                <th className="px-6 py-4">Unit Price</th>
-                                <th className="px-6 py-4">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {recentProducts.map((p, i) => (
-                                <tr key={i} className="border-b border-border hover:bg-muted/20 transition-colors">
-                                    <td className="px-6 py-4 font-mono text-muted-foreground">{p.id}</td>
-                                    <td className="px-6 py-4 font-medium">{p.name}</td>
-                                    <td className="px-6 py-4 font-mono">{p.stock}</td>
-                                    <td className="px-6 py-4">
-                                        <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${p.status === 'Healthy' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30' :
-                                                p.status === 'Warning' ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/30' :
-                                                    'bg-red-500/10 text-red-500 border-red-500/30'
-                                            }`}>
-                                            {p.status}
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4 font-mono">{p.price}</td>
-                                    <td className="px-6 py-4">
-                                        <button className="text-brand-500 hover:text-brand-400 font-medium">Edit</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+
+                {/* Main Grid Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-auto lg:h-[450px]">
+                    {/* Main Chart - Takes 2 columns */}
+                    <div className="lg:col-span-2">
+                        <SalesChart />
+                    </div>
+                    {/* AI Insights - Takes 1 column */}
+                    <div className="lg:col-span-1 h-[450px]">
+                        <ClientInsights />
+                    </div>
                 </div>
-            </motion.div>
+
+                {/* Secondary Grid Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12">
+                    {/* Employee Rankings - Takes 2 columns (could be 1 depending on layout) */}
+                    <div className="lg:col-span-2 h-[450px]">
+                        <EmployeeRanking />
+                    </div>
+                    {/* Placeholder for future "What-If Simulator" */}
+                    <div className="lg:col-span-1 h-[450px] p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group hover:border-blue-500/50 transition-colors cursor-pointer">
+                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <Activity className="w-12 h-12 text-slate-600 mb-4 group-hover:text-blue-400 transition-colors" />
+                        <h3 className="text-xl font-bold font-heading text-slate-300 mb-2">Simulador What-If</h3>
+                        <p className="text-sm text-slate-500 max-w-[80%] mx-auto">Próximamente: Ajusta variables macroeconómicas y observa la predicción de ventas en tiempo real.</p>
+                        <button className="mt-6 px-6 py-2 rounded-full border border-slate-700 text-slate-400 text-sm font-semibold group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-all">Ver Demostración</button>
+                    </div>
+                </div>
+            </main>
         </div>
     );
+}
+
+// Helper component for stats
+function StatCard({ title, value, target, icon: Icon, trend, color, bg, shadow, isNegative = false }: any) {
+    return (
+        <div className={`p-6 bg-white/5 backdrop-blur-xl border border-white/5 rounded-3xl relative overflow-hidden group hover:bg-white/10 transition-colors ${shadow}`}>
+            <div className="flex justify-between items-start mb-4 relative z-10">
+                <div className={`p-3 rounded-2xl ${bg} ${color}`}>
+                    <Icon className="w-5 h-5" />
+                </div>
+                <span className={`px-2.5 py-1 rounded-full text-xs font-bold font-mono ${isNegative ? 'bg-rose-500/20 text-rose-400' : 'bg-emerald-500/20 text-emerald-400'}`}>
+                    {trend}
+                </span>
+            </div>
+            <div className="relative z-10">
+                <div className="text-slate-400 text-sm font-medium mb-1">{title}</div>
+                <div className="text-3xl font-bold font-heading text-white">{value}</div>
+                <div className="text-xs text-slate-500 mt-2 font-medium">{target}</div>
+            </div>
+            {/* Glow effect on hover */}
+            <div className={`absolute -inset-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:animate-pulse pointer-events-none rounded-3xl`} />
+        </div>
+    )
 }

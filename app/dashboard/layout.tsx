@@ -1,5 +1,6 @@
-import { ShieldCheck, LayoutDashboard, Package, Users, Settings, LogOut, ChartNoAxesColumn } from "lucide-react";
+import DashboardSidebar from "@/components/layout/DashboardSidebar";
 import Link from "next/link";
+import { Bell } from "lucide-react";
 
 export default function DashboardLayout({
     children,
@@ -7,61 +8,30 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="flex min-h-screen flex-col md:flex-row bg-background">
-            {/* Sidebar */}
-            <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-border bg-card flex flex-col pt-6 z-10">
-                <div className="px-6 pb-6 flex items-center gap-2 font-outfit text-xl font-bold border-b border-border">
-                    <ShieldCheck className="h-6 w-6 text-brand-500" />
-                    <span>SecureTech OS™</span>
-                </div>
-                <nav className="flex-1 px-4 py-6 space-y-2">
-                    <Link href="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-md bg-brand-500/10 text-brand-500 font-medium">
-                        <LayoutDashboard className="h-5 w-5" />
-                        Overview
-                    </Link>
-                    <Link href="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors font-medium">
-                        <Package className="h-5 w-5" />
-                        Product Control
-                    </Link>
-                    <Link href="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors font-medium">
-                        <ChartNoAxesColumn className="h-5 w-5" />
-                        Reports & Analytics
-                    </Link>
-                    <Link href="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors font-medium">
-                        <Users className="h-5 w-5" />
-                        User Management
-                    </Link>
-                    <Link href="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors font-medium">
-                        <Settings className="h-5 w-5" />
-                        System Rules
-                    </Link>
-                </nav>
-                <div className="p-4 border-t border-border">
-                    <Link href="/" className="flex items-center gap-3 px-3 py-2 rounded-md text-muted-foreground hover:bg-red-500/10 hover:text-red-500 transition-colors font-medium">
-                        <LogOut className="h-5 w-5" />
-                        Exit Dashboard Mode
-                    </Link>
-                </div>
-            </aside>
+        <div className="min-h-screen bg-slate-950 flex selection:bg-blue-500/30">
+            <DashboardSidebar />
 
             {/* Main Content Area */}
-            <main className="flex-1 flex flex-col h-screen overflow-hidden">
-                <header className="h-16 border-b border-border bg-card flex items-center px-8 justify-between shrink-0">
-                    <h1 className="font-outfit font-semibold text-xl">Overview</h1>
+            <div className="flex-1 md:ml-64 relative min-w-0">
+                {/* Top Navbar Header */}
+                <header className="sticky top-0 z-30 h-16 bg-slate-950/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-4 sm:px-8">
+                    <div className="text-slate-400 text-sm font-medium hidden sm:block">
+                        Enterprise Workspace <span className="text-slate-600 mx-2">/</span> Global View
+                    </div>
+
                     <div className="flex items-center gap-4">
-                        <div className="flex flex-col items-end">
-                            <span className="text-sm font-medium">Admin User</span>
-                            <span className="text-xs text-muted-foreground">admin@securetech.com</span>
-                        </div>
-                        <div className="h-10 w-10 bg-brand-500/20 text-brand-500 font-bold flex items-center justify-center rounded-full border border-brand-500/30">
-                            AD
+                        <button className="relative p-2 text-slate-400 hover:text-white transition-colors rounded-full hover:bg-white/5">
+                            <Bell className="w-5 h-5" />
+                            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full border border-slate-900"></span>
+                        </button>
+                        <div className="h-8 w-8 rounded-full overflow-hidden border-2 border-slate-700 cursor-pointer">
+                            <img src="https://i.pravatar.cc/150?u=admin" className="w-full h-full object-cover" alt="Admin user" />
                         </div>
                     </div>
                 </header>
-                <div className="flex-1 overflow-auto bg-black p-8">
-                    {children}
-                </div>
-            </main>
+
+                {children}
+            </div>
         </div>
     );
 }
