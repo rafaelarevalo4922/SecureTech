@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
+
 export const metadata: Metadata = {
     title: "SecureTech Software Solutions",
     description: "Enterprise software systems with top-tier security and reporting.",
@@ -25,7 +27,9 @@ export default function RootLayout({
                     outfit.variable
                 )}
             >
-                {children}
+                <LanguageProvider>
+                    {children}
+                </LanguageProvider>
             </body>
         </html>
     );
