@@ -1,9 +1,14 @@
+"use client";
+
 import SalesChart from "@/components/dashboard/SalesChart";
 import EmployeeRanking from "@/components/dashboard/EmployeeRanking";
 import ClientInsights from "@/components/dashboard/ClientInsights";
 import { DollarSign, Percent, Users, Activity } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function DashboardPage() {
+    const { t } = useLanguage();
+
     return (
         <div className="relative text-slate-200 font-sans">
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
@@ -13,22 +18,22 @@ export default function DashboardPage() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div>
                         <h1 className="text-3xl md:text-4xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 mb-2">
-                            Command Center
+                            {t.dashboard.commandCenter.title}
                         </h1>
-                        <p className="text-slate-400">Inteligencia de ventas y predicciones impulsadas por IA.</p>
+                        <p className="text-slate-400">{t.dashboard.commandCenter.subtitle}</p>
                     </div>
                     <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 text-blue-400 text-sm font-semibold">
                         <Activity className="w-4 h-4 animate-pulse" />
-                        IA Predictive Engine: ONLINE
+                        {t.dashboard.commandCenter.aiStatus}
                     </div>
                 </div>
 
                 {/* Global Stats Matrix */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <StatCard title="Ingresos Anuales (YTD)" value="$2.4M" target="vs $1.8M (2025)" icon={DollarSign} trend="+33%" color="text-emerald-400" bg="bg-emerald-400/10" shadow="shadow-[0_0_30px_-5px_rgba(16,185,129,0.15)]" />
-                    <StatCard title="Pipeline Proyectado" value="$850K" target="Q3 - Q4 2026" icon={Activity} trend="+12%" color="text-blue-400" bg="bg-blue-400/10" shadow="shadow-[0_0_30px_-5px_rgba(59,130,246,0.15)]" />
-                    <StatCard title="Win Rate Global" value="48.5%" target="Promedio industria: 32%" icon={Percent} trend="+5.2%" color="text-purple-400" bg="bg-purple-400/10" shadow="shadow-[0_0_30px_-5px_rgba(168,85,247,0.15)]" />
-                    <StatCard title="Clientes Activos" value="142" target="9 en riesgo de fuga" icon={Users} trend="-2" color="text-rose-400" bg="bg-rose-400/10" shadow="shadow-[0_0_30px_-5px_rgba(244,63,94,0.15)]" isNegative />
+                    <StatCard title={t.dashboard.commandCenter.revenue} value="$2.4M" target={t.dashboard.commandCenter.revenueTarget} icon={DollarSign} trend="+33%" color="text-emerald-400" bg="bg-emerald-400/10" shadow="shadow-[0_0_30px_-5px_rgba(16,185,129,0.15)]" />
+                    <StatCard title={t.dashboard.commandCenter.pipeline} value="$850K" target={t.dashboard.commandCenter.pipelineTarget} icon={Activity} trend="+12%" color="text-blue-400" bg="bg-blue-400/10" shadow="shadow-[0_0_30px_-5px_rgba(59,130,246,0.15)]" />
+                    <StatCard title={t.dashboard.commandCenter.winRate} value="48.5%" target={t.dashboard.commandCenter.winRateTarget} icon={Percent} trend="+5.2%" color="text-purple-400" bg="bg-purple-400/10" shadow="shadow-[0_0_30px_-5px_rgba(168,85,247,0.15)]" />
+                    <StatCard title={t.dashboard.commandCenter.clients} value="142" target={t.dashboard.commandCenter.clientsTarget} icon={Users} trend="-2" color="text-rose-400" bg="bg-rose-400/10" shadow="shadow-[0_0_30px_-5px_rgba(244,63,94,0.15)]" isNegative />
                 </div>
 
                 {/* Main Grid Layout */}
@@ -53,9 +58,9 @@ export default function DashboardPage() {
                     <div className="lg:col-span-1 h-[450px] p-6 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden group hover:border-blue-500/50 transition-colors cursor-pointer">
                         <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <Activity className="w-12 h-12 text-slate-600 mb-4 group-hover:text-blue-400 transition-colors" />
-                        <h3 className="text-xl font-bold font-heading text-slate-300 mb-2">Simulador What-If</h3>
-                        <p className="text-sm text-slate-500 max-w-[80%] mx-auto">Próximamente: Ajusta variables macroeconómicas y observa la predicción de ventas en tiempo real.</p>
-                        <button className="mt-6 px-6 py-2 rounded-full border border-slate-700 text-slate-400 text-sm font-semibold group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-all">Ver Demostración</button>
+                        <h3 className="text-xl font-bold font-heading text-slate-300 mb-2">{t.dashboard.commandCenter.whatIf}</h3>
+                        <p className="text-sm text-slate-500 max-w-[80%] mx-auto">{t.dashboard.commandCenter.whatIfDesc}</p>
+                        <button className="mt-6 px-6 py-2 rounded-full border border-slate-700 text-slate-400 text-sm font-semibold group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-all">{t.dashboard.commandCenter.viewDemo}</button>
                     </div>
                 </div>
             </main>

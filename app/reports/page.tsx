@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import {
     BarChart4,
     Map,
@@ -41,6 +42,8 @@ const anomalyData = [
 ];
 
 export default function ReportsPage() {
+    const { t } = useLanguage();
+
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans relative selection:bg-purple-500/30">
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay z-0"></div>
@@ -51,11 +54,11 @@ export default function ReportsPage() {
                     <div>
                         <h1 className="text-3xl md:text-4xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-rose-400 mb-2 flex items-center gap-3">
                             <BarChart4 className="w-8 h-8 text-purple-400" />
-                            Advanced Analytics
+                            {t.dashboard.reports.title}
                         </h1>
-                        <p className="text-slate-400">Deep insights impulsados por modelos de Machine Learning.</p>
+                        <p className="text-slate-400">{t.dashboard.reports.subtitle}</p>
                     </div>
-                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2 text-purple-300 text-sm font-semibold shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                    <div className="flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2 text-purple-300 text-sm font-semibold shadow-[0_0_15px_rgba(168,85,247,0.2)]">
                         <Sparkles className="w-4 h-4" />
                         Auto-Analysis Active
                     </div>
@@ -82,12 +85,14 @@ export default function ReportsPage() {
                         <div className="absolute top-0 right-0 p-6 pointer-events-none">
                             <AlertOctagon className="w-24 h-24 text-rose-500/5 -rotate-12" />
                         </div>
-                        <div className="mb-6 relative z-10">
-                            <h3 className="text-xl font-bold font-heading text-white flex items-center gap-2">
-                                <BrainCircuit className="w-5 h-5 text-pink-400" />
-                                AI Anomaly Detection
-                            </h3>
-                            <p className="text-sm text-slate-400">Patrones inusuales detectados automáticamente en el volumen de transacciones.</p>
+                        <div className="mb-6 relative z-10 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                            <div>
+                                <h3 className="text-xl font-bold font-heading text-white flex items-center gap-2">
+                                    <BrainCircuit className="w-5 h-5 text-pink-400" />
+                                    AI Anomaly Detection
+                                </h3>
+                                <p className="text-sm text-slate-400">Patrones inusuales detectados automáticamente en el volumen.</p>
+                            </div>
                         </div>
 
                         <div className="h-[300px] w-full">

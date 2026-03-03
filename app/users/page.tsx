@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import {
     Users,
     ShieldCheck,
@@ -22,7 +23,7 @@ const auditLogs = [
     { id: 5, user: "Admin Root", action: "API Key Generated", resource: "Stripe Integration", ip: "192.168.1.1", location: "Madrid, ES", time: "5 hours ago", status: "success" },
 ];
 
-const users = [
+const usersData = [
     { name: "Elena Rodríguez", role: "Super Admin", department: "Management", riskScore: 12, device: "MacBook Pro", active: true },
     { name: "Carlos Mendoza", role: "Billing Admin", department: "Finance", riskScore: 8, device: "Windows Desktop", active: true },
     { name: "Sofía Castillo", role: "Sales Rep", department: "Sales", riskScore: 45, device: "iPhone 14 (Mobile)", active: true, warning: true },
@@ -30,6 +31,8 @@ const users = [
 ];
 
 export default function UsersPage() {
+    const { t } = useLanguage();
+
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans relative selection:bg-emerald-500/30">
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay z-0"></div>
@@ -40,21 +43,21 @@ export default function UsersPage() {
                     <div>
                         <h1 className="text-3xl md:text-4xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 mb-2 flex items-center gap-3">
                             <ShieldCheck className="w-8 h-8 text-emerald-400" />
-                            Identity & Security
+                            {t.dashboard.users.title}
                         </h1>
-                        <p className="text-slate-400">Control de Accesos (RBAC), Auditoría de eventos y Threat Score.</p>
+                        <p className="text-slate-400">{t.dashboard.users.subtitle}</p>
                     </div>
-                    <div className="flex items-center gap-4">
-                        <div className="relative">
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                        <div className="relative w-full sm:w-auto">
                             <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
                             <input
                                 type="text"
-                                placeholder="Buscar logs, IPs, usuarios..."
-                                className="bg-slate-900 border border-slate-800 rounded-full pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 w-64"
+                                placeholder={t.dashboard.users.search}
+                                className="bg-slate-900 border border-slate-800 rounded-full pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 w-full sm:w-64"
                             />
                         </div>
-                        <button className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors flex items-center gap-2">
-                            <Key className="w-4 h-4" /> Invite User
+                        <button className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors flex items-center justify-center gap-2 whitespace-nowrap w-full sm:w-auto">
+                            <Key className="w-4 h-4" /> {t.dashboard.users.invite}
                         </button>
                     </div>
                 </div>
@@ -63,7 +66,7 @@ export default function UsersPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex items-center justify-between">
                         <div>
-                            <p className="text-slate-400 text-sm font-medium mb-1">Global Threat Score</p>
+                            <p className="text-slate-400 text-sm font-medium mb-1">{t.dashboard.users.threatScore}</p>
                             <div className="flex items-baseline gap-2">
                                 <h2 className="text-3xl font-bold text-emerald-400">Low</h2>
                                 <span className="text-xs text-slate-500 font-mono">12/100</span>
@@ -75,10 +78,10 @@ export default function UsersPage() {
                     </div>
                     <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex items-center justify-between">
                         <div>
-                            <p className="text-slate-400 text-sm font-medium mb-1">Active Sessions</p>
+                            <p className="text-slate-400 text-sm font-medium mb-1">{t.dashboard.users.sessions}</p>
                             <div className="flex items-baseline gap-2">
                                 <h2 className="text-3xl font-bold text-white">24</h2>
-                                <span className="text-xs text-slate-500 font-mono">Across 5 regions</span>
+                                <span className="text-xs text-slate-500 font-mono">{t.dashboard.users.regions}</span>
                             </div>
                         </div>
                         <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
@@ -87,10 +90,10 @@ export default function UsersPage() {
                     </div>
                     <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex items-center justify-between">
                         <div>
-                            <p className="text-slate-400 text-sm font-medium mb-1">Anomalous Logins (24h)</p>
+                            <p className="text-slate-400 text-sm font-medium mb-1">{t.dashboard.users.anomalies}</p>
                             <div className="flex items-baseline gap-2">
                                 <h2 className="text-3xl font-bold text-rose-400">1</h2>
-                                <span className="text-xs text-slate-500 font-mono">Requires review</span>
+                                <span className="text-xs text-slate-500 font-mono">{t.dashboard.users.requiresReview}</span>
                             </div>
                         </div>
                         <div className="w-12 h-12 rounded-full bg-rose-500/10 border border-rose-500/20 flex items-center justify-center">
@@ -106,11 +109,11 @@ export default function UsersPage() {
                         <div className="p-6 border-b border-white/5 flex items-center justify-between bg-slate-900/50">
                             <h3 className="font-bold text-white flex items-center gap-2">
                                 <Users className="w-5 h-5 text-blue-400" />
-                                Directory
+                                {t.dashboard.users.directory}
                             </h3>
                         </div>
                         <div className="flex-1 overflow-y-auto p-2 custom-scrollbar">
-                            {users.map((user, i) => (
+                            {usersData.map((user, i) => (
                                 <div key={i} className="flex items-start justify-between p-4 hover:bg-white/5 rounded-2xl transition-colors group cursor-pointer border border-transparent hover:border-white/5">
                                     <div className="flex items-center gap-3">
                                         <div className="relative">
@@ -126,7 +129,7 @@ export default function UsersPage() {
                                     </div>
                                     <div className="text-right flex flex-col items-end">
                                         <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold ${user.warning ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' : 'bg-slate-800 text-slate-400'}`}>
-                                            Risk: {user.riskScore}
+                                            {t.dashboard.users.risk}: {user.riskScore}
                                         </span>
                                         <div className="mt-2 text-slate-500"><MoreVertical className="w-4 h-4" /></div>
                                     </div>
@@ -141,12 +144,12 @@ export default function UsersPage() {
                             <div>
                                 <h3 className="font-bold text-white flex items-center gap-2 mb-1">
                                     <Clock className="w-5 h-5 text-indigo-400" />
-                                    Immutable Audit Trail
+                                    {t.dashboard.users.auditTrail}
                                 </h3>
-                                <p className="text-xs text-slate-400">Monitoreo de actividad de usuarios, APIs y bases de datos en tiempo real.</p>
+                                <p className="text-xs text-slate-400">{t.dashboard.users.auditSub}</p>
                             </div>
                             <button className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-colors border border-slate-700">
-                                Export CSV
+                                {t.dashboard.users.export}
                             </button>
                         </div>
 
@@ -154,11 +157,11 @@ export default function UsersPage() {
                             <table className="w-full text-left text-sm whitespace-nowrap">
                                 <thead className="bg-slate-900/50 text-slate-400 text-xs uppercase tracking-wider sticky top-0 backdrop-blur-md">
                                     <tr>
-                                        <th className="px-6 py-4 font-semibold">User / System</th>
-                                        <th className="px-6 py-4 font-semibold">Action</th>
-                                        <th className="px-6 py-4 font-semibold">IP & Location</th>
-                                        <th className="px-6 py-4 font-semibold">Time</th>
-                                        <th className="px-6 py-4 font-semibold">Status</th>
+                                        <th className="px-6 py-4 font-semibold">{t.dashboard.users.colUser}</th>
+                                        <th className="px-6 py-4 font-semibold">{t.dashboard.users.colAction}</th>
+                                        <th className="px-6 py-4 font-semibold">{t.dashboard.users.colIP}</th>
+                                        <th className="px-6 py-4 font-semibold">{t.dashboard.users.colTime}</th>
+                                        <th className="px-6 py-4 font-semibold">{t.dashboard.users.colStatus}</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-white/5">
@@ -189,11 +192,11 @@ export default function UsersPage() {
                                             <td className="px-6 py-4">
                                                 {log.status === 'success' ? (
                                                     <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/20">
-                                                        <CheckCircle2 className="w-3 h-3" /> Success
+                                                        <CheckCircle2 className="w-3 h-3" /> {t.dashboard.users.success}
                                                     </span>
                                                 ) : (
                                                     <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-rose-500/10 text-rose-400 text-xs font-semibold border border-rose-500/20">
-                                                        <XCircle className="w-3 h-3" /> Failed
+                                                        <XCircle className="w-3 h-3" /> {t.dashboard.users.failed}
                                                     </span>
                                                 )}
                                             </td>
