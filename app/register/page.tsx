@@ -7,8 +7,9 @@ import Link from 'next/link'
 import { ShieldCheck, Mail, Lock, ArrowRight, Rocket, MousePointer2, Database, Globe, ArrowLeft } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { signUp } from './registerActions'
+import { Suspense } from 'react'
 
-export default function RegisterPage() {
+function RegisterContent() {
     const { t, language, setLanguage } = useLanguage()
     const searchParams = useSearchParams()
     const message = searchParams.get('message')
@@ -199,5 +200,13 @@ export default function RegisterPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function RegisterPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center" />}>
+            <RegisterContent />
+        </Suspense>
     )
 }

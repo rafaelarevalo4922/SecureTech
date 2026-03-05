@@ -7,8 +7,9 @@ import Link from 'next/link'
 import { Lock, Mail, ShieldCheck, ArrowRight, Globe, ArrowLeft } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { signIn } from './loginActions'
+import { Suspense } from 'react'
 
-export default function LoginPage() {
+function LoginContent() {
     const { t, language, setLanguage } = useLanguage()
     const searchParams = useSearchParams()
     const message = searchParams.get('message')
@@ -135,5 +136,13 @@ export default function LoginPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-[#020617] flex items-center justify-center" />}>
+            <LoginContent />
+        </Suspense>
     )
 }

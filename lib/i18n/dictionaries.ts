@@ -126,7 +126,7 @@ export const dictionaries = {
                 subtitle: "Multi-dimensional analysis of enterprise performance.",
                 exportReport: "Export Report",
                 salesTrends: "Sales & Revenue Trends",
-                NetProcessing: "Net Processing",
+                netProcessing: "Net Processing",
                 churnRate: "Churn Rate",
                 conversion: "Conversion Optimization",
             },
@@ -268,8 +268,20 @@ export const dictionaries = {
                 nextStepTitle: "Next step:",
                 nextStepDesc: "Our team will review your case and reach out via ",
                 nextStepContact: "WhatsApp",
-                backToHome: "Back to Home"
-            }
+                backToHome: "Back to Home"            },
+            dashboard: {
+                title: "Audit Records",
+                subtitle: "Admin view of all prospects and clients who completed the form.",
+                table: {
+                    company: "Company / Contact",
+                    phone: "Phone",
+                    challenge: "Main Challenge",
+                    modules: "Modules of Interest",
+                    date: "Date",
+                    actions: "Actions",
+                    noRecords: "No audit records yet.",
+                    email: "Email"
+                }            }
         }
         // end auditoria translations
 

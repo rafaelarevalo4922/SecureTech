@@ -46,7 +46,7 @@ export default function AuditoriaFormPage() {
         const contact_phone = formData.get('contact_phone') as string
 
         // Validation with refs
-        const errors: { message: string; ref: React.RefObject<HTMLDivElement> | null }[] = []
+        const errors: { message: string; ref: React.RefObject<HTMLDivElement | null> }[] = []
 
         if (!challenge) errors.push({ message: 'Selecciona un desafío principal', ref: challengeRef })
         if (!security_access) errors.push({ message: 'Selecciona una opción de seguridad y acceso', ref: securityRef })
