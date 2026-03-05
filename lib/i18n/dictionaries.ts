@@ -75,6 +75,12 @@ export const dictionaries = {
                 logout: "Log Out",
                 status: "All systems operational",
                 admin: "Admin user",
+                logoutConfirm: {
+                    title: "Log Out?",
+                    message: "Are you sure you want to sign out of your current session?",
+                    confirm: "Log Out",
+                    cancel: "Cancel"
+                }
             },
             commandCenter: {
                 title: "Command Center",
@@ -120,11 +126,153 @@ export const dictionaries = {
                 subtitle: "Multi-dimensional analysis of enterprise performance.",
                 exportReport: "Export Report",
                 salesTrends: "Sales & Revenue Trends",
-                netProcessing: "Net Processing",
+                NetProcessing: "Net Processing",
                 churnRate: "Churn Rate",
                 conversion: "Conversion Optimization",
+            },
+            settings: {
+                title: "System Settings",
+                subtitle: "Manage your enterprise platform configuration and security preferences.",
+                security: "Security Hardening",
+                securityDesc: "Configure advanced threat protection and API access.",
+                save: "Save Changes",
+                tabs: {
+                    general: "General",
+                    security: "Security",
+                    notifications: "Notifications",
+                    appearance: "Appearance"
+                },
+                twoFactor: "Two-Factor Authentication",
+                twoFactorDesc: "Require a secondary code for all administrative logins.",
+                whitelisting: "IP Whitelisting",
+                whitelistingDesc: "Restrict dashboard access to specific corporate IP ranges.",
+                logging: "API Audit Logging",
+                loggingDesc: "Store immutable logs of all external API requests for 1 year.",
+            }
+        },
+        auth: {
+            login: {
+                title: "Client Login",
+                subtitle: "Secure access to your enterprise dashboard",
+                email: "Administrator Email",
+                password: "Password",
+                forgot: "Forgot?",
+                submit: "Secure Login",
+                footer: "Enterprise Auth",
+                noAccount: "Don't have a corporate system yet?",
+                requestConsultation: "Request a system consultation"
+            },
+            register: {
+                title: "Create User Account",
+                subtitle: "Enter your details to create your enterprise account.",
+                firstName: "First Name",
+                firstNamePlaceholder: "John",
+                lastName: "Last Name",
+                lastNamePlaceholder: "Doe",
+                email: "Work Email",
+                emailPlaceholder: "you@company.com",
+                company: "Company Name",
+                companyPlaceholder: "Acme Corp",
+                password: "Account Password",
+                submit: "Create Account",
+                quickAccess: "Quick Access",
+                google: "Continue with Google",
+                alreadyClient: "Already a client?",
+                signIn: "Sign in to dashboard",
+                badge: "Digital Transformation",
+                hero: "Elevate your business operations with secure, scalable software.",
+                heroSub: "Tell us about your company and your system requirements. Whether you need a simple reporting tool or a fully custom enterprise architecture, we build it explicitly for you.",
+                f1Title: "Tailored Security Measures",
+                f1Desc: "Role-based access controls and encrypted data pipelines as standard.",
+                f2Title: "Independent Infrastructure",
+                f2Desc: "Host on our global cloud network or deploy straight to your own enterprise hardware."
+            }
+        },
+        // ======== Auditoría Translations ========
+        auditoria: {
+            form: {
+                badge: "Free Audit",
+                title: "Technical Audit",
+                description: "Fill out this quick form to identify your operational pain points and discover how a custom system can scale your business.",
+                backToHome: "Back to Home",
+                sections: {
+                    challenge: {
+                        title: "1. Identify Your Main Challenge",
+                        subtitle: "What is the biggest obstacle your operations currently face? (Select one)",
+                        options: [
+                            "Lack of visibility: No real-time data.",
+                            "Security concerns: Worried about who accesses information.",
+                            "Manual processes: We waste time on repetitive tasks.",
+                            "Scalability: My current system doesn’t grow with my business."
+                        ]
+                    },
+                    operations: {
+                        title: "2. Operational Snapshot",
+                        subtitle: "Check the situations happening in your company today (You can select multiple):",
+                        options: [
+                            "Frequent errors in sales or billing records.",
+                            "Inventory control doesn’t match physical reality.",
+                            "Hard to track customer interactions or history.",
+                            "Staff use unprotected tools for sensitive data.",
+                            "We lack automatic backups of our information."
+                        ]
+                    },
+                    security: {
+                        title: "3. Security & Access",
+                        subtitle: "How do you currently manage permissions for your team? (Select one)",
+                        options: [
+                            "Everyone has access to almost everything.",
+                            "We use shared passwords.",
+                            "We have access levels, but they’re hard to manage.",
+                            "I’m not sure who modified what data."
+                        ]
+                    },
+                    impact: {
+                        title: "4. Impact Projection",
+                        subtitle: "Where would you see the most benefit from an ideal system? (You can select multiple)",
+                        options: [
+                            "Hours saved (Productivity).",
+                            "Reduced financial losses.",
+                            "Better customer service and closed sales.",
+                            "Legal peace of mind and data security."
+                        ]
+                    },
+                    modules: {
+                        title: "5. Modules of Interest",
+                        subtitle: "What components do you think your ideal architecture needs?",
+                        options: [
+                            "User & Role Management (Security)",
+                            "Inventory & Product Control",
+                            "Sales, Billing & Financial Reports",
+                            "CRM & Customer Management",
+                            "Analytics Dashboard & Real-Time Charts"
+                        ]
+                    },
+                    contact: {
+                        title: "6. Contact Information",
+                        subtitle: "So we can send your personalized report.",
+                        companyPlaceholder: "Your Company LLC",
+                        industryPlaceholder: "Tech, Retail, etc.",
+                        teamSizePlaceholder: "Select an option",
+                        emailPlaceholder: "you@company.com",
+                        phoneNote: "Include your country code for easier direct contact."
+                    }
+                },
+                submit: "Request Free Audit",
+                loading: "Processing request...",
+                encryptionNote: "Your data is encrypted and protected by SecureTech."
+            },
+            success: {
+                title: "Audit Requested!",
+                received: "We’ve received your responses successfully.",
+                nextStepTitle: "Next step:",
+                nextStepDesc: "Our team will review your case and reach out via ",
+                nextStepContact: "WhatsApp",
+                backToHome: "Back to Home"
             }
         }
+        // end auditoria translations
+
     },
     es: {
         nav: {
@@ -202,6 +350,12 @@ export const dictionaries = {
                 logout: "Cerrar Sesión",
                 status: "Sistemas operativos",
                 admin: "Usuario Admin",
+                logoutConfirm: {
+                    title: "¿Cerrar sesión?",
+                    message: "¿Estás seguro de que deseas salir de tu cuenta actual?",
+                    confirm: "Cerrar Sesión",
+                    cancel: "Cancelar"
+                }
             },
             commandCenter: {
                 title: "Panel de Control",
@@ -250,8 +404,163 @@ export const dictionaries = {
                 netProcessing: "Procesamiento Neto",
                 churnRate: "Tasa de Deserción",
                 conversion: "Optimización de Conversión",
+            },
+            settings: {
+                title: "Ajustes del Sistema",
+                subtitle: "Gestiona la configuración de tu plataforma empresarial y preferencias de seguridad.",
+                security: "Refuerzo de Seguridad",
+                securityDesc: "Configura la protección avanzada contra amenazas y el acceso a la API.",
+                save: "Guardar Cambios",
+                tabs: {
+                    general: "General",
+                    security: "Seguridad",
+                    notifications: "Notificaciones",
+                    appearance: "Apariencia"
+                },
+                twoFactor: "Autenticación de Dos Factores",
+                twoFactorDesc: "Requerir un código secundario para todos los inicios de sesión administrativos.",
+                whitelisting: "Lista Blanca de IPs",
+                whitelistingDesc: "Restringir el acceso al panel a rangos de IP corporativos específicos.",
+                logging: "Registro de Auditoría de API",
+                loggingDesc: "Almacenar registros inmutables de todas las solicitudes de API externas por 1 año.",
+            }
+        },
+        auth: {
+            login: {
+                title: "Inicio de Sesión",
+                subtitle: "Acceso seguro a su panel empresarial",
+                email: "Correo del Administrador",
+                password: "Contraseña",
+                forgot: "¿Olvidó?",
+                submit: "Ingresar de forma Segura",
+                footer: "Autenticación Empresarial",
+                noAccount: "¿Aún no tienes un sistema corporativo?",
+                requestConsultation: "Solicitar una consulta de sistema"
+            },
+            register: {
+                title: "Crear Cuenta de Usuario",
+                subtitle: "Ingresa tus datos para crear tu cuenta empresarial.",
+                firstName: "Nombre",
+                firstNamePlaceholder: "Juan",
+                lastName: "Apellido",
+                lastNamePlaceholder: "Pérez",
+                email: "Email de Trabajo",
+                emailPlaceholder: "tu@empresa.com",
+                company: "Nombre de la Empresa",
+                companyPlaceholder: "Mi Empresa S.A.",
+                password: "Contraseña de la Cuenta",
+                submit: "Crear Cuenta",
+                quickAccess: "Acceso Rápido",
+                google: "Continuar con Google",
+                alreadyClient: "¿Ya es cliente?",
+                signIn: "Iniciar sesión en el panel",
+                badge: "Transformación Digital",
+                hero: "Eleve sus operaciones comerciales con software seguro y escalable.",
+                heroSub: "Cuéntenos sobre su empresa y sus requisitos de sistema. Ya sea que necesite una herramienta de informes simple o una arquitectura empresarial completa, la construimos explícitamente para usted.",
+                f1Title: "Medidas de Seguridad a Medida",
+                f1Desc: "Controles de acceso basados en roles y tuberías de datos cifradas por defecto.",
+                f2Title: "Infraestructura Independiente",
+                f2Desc: "Hospede en nuestra red global o despliegue directamente en su propio hardware empresarial."
+            }
+        },
+        // ======== Auditoría Translations ========
+        auditoria: {
+            form: {
+                badge: "Diagnóstico Gratuito",
+                title: "Auditoría Técnica",
+                description: "Completa este formulario rápido enfocado en identificar el problema de tu operativa y descubre cómo un sistema a medida puede escalar tu negocio.",
+                backToHome: "Volver al Inicio",
+                sections: {
+                    challenge: {
+                        title: "1. Identificación del Desafío Principal",
+                        subtitle: "¿Cuál es el obstáculo más grande que enfrenta tu operativa actualmente? (Selecciona una)",
+                        options: [
+                            "Falta de visibilidad: No tengo datos en tiempo real.",
+                            "Inseguridad: Me preocupa quién accede a la información.",
+                            "Procesos manuales: Perdemos tiempo en tareas repetitivas.",
+                            "Escalabilidad: Mi sistema actual no crece con mi negocio."
+                        ]
+                    },
+                    operations: {
+                        title: "2. Radiografía Operativa",
+                        subtitle: "Marca las situaciones que ocurren hoy en tu empresa (Puedes seleccionar varias):",
+                        options: [
+                            "Errores frecuentes en el registro de ventas o facturación.",
+                            "El control de inventario no coincide con la realidad física.",
+                            "Es difícil rastrear las interacciones o el historial de los clientes.",
+                            "El personal utiliza herramientas no protegidas para datos sensibles.",
+                            "No contamos con respaldos automáticos de nuestra información."
+                        ]
+                    },
+                    security: {
+                        title: "3. Seguridad y Acceso",
+                        subtitle: "¿Cómo gestionan actualmente los permisos de su equipo? (Selecciona una)",
+                        options: [
+                            "Todos tienen acceso a casi todo.",
+                            "Usamos contraseñas compartidas.",
+                            "Tenemos niveles de acceso, pero son difíciles de administrar.",
+                            "No tengo certeza de quién modificó qué dato."
+                        ]
+                    },
+                    impact: {
+                        title: "4. Proyección de Impacto",
+                        subtitle: "¿Dónde verías el mayor beneficio al tener un sistema ideal? (Puedes seleccionar varias)",
+                        options: [
+                            "Ahorro de horas hombre (Productividad).",
+                            "Reducción de pérdidas económicas.",
+                            "Mejor servicio al cliente y cierre de ventas.",
+                            "Tranquilidad legal y seguridad de datos."
+                        ]
+                    },
+                    modules: {
+                        title: "5. Módulos de Interés",
+                        subtitle: "¿Qué componentes crees que necesita tu arquitectura ideal?",
+                        options: [
+                            "Gestión de Usuarios y Roles (Seguridad)",
+                            "Control de Inventarios y Productos",
+                            "Ventas, Facturación y Reportes Financieros",
+                            "CRM y Gestión de Clientes",
+                            "Panel de Analítica y Gráficos en Tiempo Real"
+                        ]
+                    },
+                    contact: {
+                        title: "6. Datos de Contacto",
+                        subtitle: "Para enviarte tu reporte personalizado.",
+                        companyPlaceholder: "Tu Empresa S.A.",
+                        industryPlaceholder: "Tecnología, Retail, etc.",
+                        teamSizePlaceholder: "Selecciona una opción",
+                        emailPlaceholder: "tu@empresa.com",
+                        phoneNote: "Incluye tu código de país para facilitar el contacto directo."
+                    }
+                },
+                submit: "Solicitar Auditoría Gratuita",
+                loading: "Procesando solicitud...",
+                encryptionNote: "Tus datos están encriptados y protegidos por SecureTech."
+            },
+            success: {
+                title: "¡Auditoría Solicitada!",
+                received: "Hemos recibido tus respuestas correctamente.",
+                nextStepTitle: "Próximo paso:",
+                nextStepDesc: "Nuestro equipo analizará tu caso y nos contactaremos contigo vía ",
+                nextStepContact: "WhatsApp",
+                backToHome: "Volver al Inicio"
+            },
+            dashboard: {
+                title: "Registros de Auditoría",
+                subtitle: "Vista de administrador de todos los prospectos y clientes que completaron el formulario.",
+                table: {
+                    company: "Empresa / Contacto",
+                    phone: "Teléfono",
+                    challenge: "Desafío Principal",
+                    modules: "Módulos de Interés",
+                    date: "Fecha",
+                    actions: "Acciones",
+                    noRecords: "No hay registros de auditoría todavía.",
+                    email: "Email"
+                }
             }
         }
+        // end auditoria translations
     }
 };
 
