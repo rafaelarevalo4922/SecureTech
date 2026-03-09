@@ -12,7 +12,8 @@ import {
     LogIn,
     Menu,
     X,
-    ArrowLeft
+    ArrowLeft,
+    UserCheck
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useState, useEffect } from "react";
@@ -85,8 +86,8 @@ export default function DashboardSidebar() {
         { name: t.dashboard.sidebar.reports, href: "/dashboard/reportes", icon: BarChart4 },
         { name: t.dashboard.sidebar.users, href: "/dashboard/usuarios", icon: Users },
 
-        // Only show Auditoría to Admins
-        ...(userRole === 'Admin' ? [{ name: "Auditoría (Leads)", href: "/dashboard/auditoria", icon: Settings }] : []),
+        // Only show Control de Clientes to Admins
+        ...(userRole === 'Admin' ? [{ name: t.dashboard.sidebar.clientControl, href: "/dashboard/auditoria", icon: UserCheck }] : []),
         { name: t.dashboard.sidebar.settings, href: "/dashboard/settings", icon: Settings },
     ];
 

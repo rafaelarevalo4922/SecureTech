@@ -21,7 +21,7 @@ export default function DashboardLayout({
                 <header className="sticky top-0 z-30 h-16 bg-slate-950/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-4 sm:px-8">
                     <div className="flex items-center gap-4 hidden sm:flex">
                         <div className="text-slate-400 text-sm font-medium">
-                            {t.dashboard.sidebar.subtitle} <span className="text-slate-600 mx-2">/</span> Global View
+                            <span className="text-slate-500">Dashboard</span> <span className="text-slate-600 mx-2">/</span> Global View
                         </div>
                     </div>
                     {/* Add spacer for mobile where the title is hidden */}
@@ -55,7 +55,7 @@ export default function DashboardLayout({
                             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full border border-slate-900"></span>
                         </button>
                         <div className="h-8 w-8 rounded-full overflow-hidden border-2 border-slate-700 cursor-pointer">
-                            <img src="https://i.pravatar.cc/150?u=admin" className="w-full h-full object-cover" alt={t.dashboard.sidebar.admin} />
+                            <img src="https://i.pravatar.cc/150?u=admin" className="w-full h-full object-cover" alt="Admin" />
                         </div>
                     </div>
                 </header>

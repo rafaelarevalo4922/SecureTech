@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
-import { CheckCircle2, AlertCircle, Target, Activity, ShieldCheck, TrendingUp, Grid, Mail, Phone, ChevronLeft } from 'lucide-react'
+import { CheckCircle2, AlertCircle, Target, Activity, ShieldCheck, TrendingUp, Grid, Mail, Phone, ChevronLeft, ChevronDown, ChevronRight } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import Link from 'next/link'
 
@@ -12,8 +12,8 @@ export default function AuditoriaFormPage() {
     const { t, language, setLanguage } = useLanguage()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [selectedChallenge, setSelectedChallenge] = useState('')
-    const [selectedSecurity, setSelectedSecurity] = useState('')
+    const [selectedChallenges, setSelectedChallenges] = useState<string[]>([])
+    const [selectedSecurities, setSelectedSecurities] = useState<string[]>([])
 
     // Create refs for each section
     const challengeRef = useRef<HTMLDivElement>(null)
@@ -37,8 +37,8 @@ export default function AuditoriaFormPage() {
         const modules_interest = formData.getAll('modules_interest') as string[]
 
         // Get form values
-        const challenge = formData.get('challenge') as string
-        const security_access = formData.get('security_access') as string
+        const challenges = formData.getAll('challenge') as string[]
+        const security_access = formData.getAll('security_access') as string[]
         const company_name = formData.get('company_name') as string
         const industry = formData.get('industry') as string
         const team_size = formData.get('team_size') as string
@@ -48,8 +48,8 @@ export default function AuditoriaFormPage() {
         // Validation with refs
         const errors: { message: string; ref: React.RefObject<HTMLDivElement | null> }[] = []
 
-        if (!challenge) errors.push({ message: 'Selecciona un desafío principal', ref: challengeRef })
-        if (!security_access) errors.push({ message: 'Selecciona una opción de seguridad y acceso', ref: securityRef })
+        if (challenges.length === 0) errors.push({ message: 'Selecciona al menos un desafío principal', ref: challengeRef })
+        if (security_access.length === 0) errors.push({ message: 'Selecciona al menos una opción de seguridad y acceso', ref: securityRef })
         if (!company_name || company_name.trim() === '') errors.push({ message: 'Nombre de la empresa obligatorio', ref: companyRef })
         if (!industry || industry.trim() === '') errors.push({ message: 'Sector/industria obligatorio', ref: industryRef })
         if (!team_size) errors.push({ message: 'Tamaño del equipo obligatorio', ref: teamSizeRef })
@@ -61,7 +61,7 @@ export default function AuditoriaFormPage() {
             // Create error message
             const errorMessages = errors.map(e => '• ' + e.message).join('\n')
             setError(errorMessages)
-            
+
             // Scroll to first missing field
             const firstErrorRef = errors[0]?.ref
             if (firstErrorRef?.current) {
@@ -76,9 +76,9 @@ export default function AuditoriaFormPage() {
         }
 
         const auditData = {
-            challenge,
+            challenge: challenges,
             operational_issues,
-            security_access,
+            security_access: security_access,
             impact_projection,
             modules_interest,
             company_name,
@@ -116,7 +116,7 @@ export default function AuditoriaFormPage() {
                         <ChevronLeft className="w-4 h-4" />
                         <span className="text-sm font-medium">{t.auditoria?.form?.backToHome || 'Back to Home'}</span>
                     </Link>
-                    
+
                     {/* Language Switcher */}
                     <div className="flex items-center bg-slate-900 border border-slate-800 rounded-full p-1">
                         <button
@@ -167,32 +167,44 @@ export default function AuditoriaFormPage() {
                                 </div>
                                 <div>
                                     <h2 className="text-2xl font-semibold">1. Identificación del Desafío Principal</h2>
-                                    <p className="text-slate-400 text-sm mt-1">¿Cuál es el obstáculo más grande que enfrenta tu operativa actualmente? (Selecciona una)</p>
+                                    <p className="text-slate-400 text-sm mt-1">¿Cuáles son los obstáculos más grandes que enfrenta tu operativa actualmente? (Selecciona varios si aplica)</p>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {[
                                     "Falta de visibilidad: No tengo datos en tiempo real.",
                                     "Inseguridad: Me preocupa quién accede a la información.",
                                     "Procesos manuales: Perdemos tiempo en tareas repetitivas.",
                                     "Escalabilidad: Mi sistema actual no crece con mi negocio."
                                 ].map((option, i) => {
-                                    const isSelected = selectedChallenge === option;
+                                    const isSelected = selectedChallenges.includes(option);
                                     return (
                                         <label
                                             key={i}
-                                            onClick={() => setSelectedChallenge(option)}
                                             className={`relative flex p-4 cursor-pointer rounded-xl border transition-all group ${isSelected
-                                                    ? 'bg-blue-500/15 border-blue-500/60 shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)]'
-                                                    : 'border-white/5 bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/30'
+                                                ? 'bg-blue-500/15 border-blue-500/60 shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)]'
+                                                : 'border-white/5 bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/30'
                                                 }`}
                                         >
-                                            <input type="radio" name="challenge" value={option} required className="sr-only" readOnly checked={isSelected} />
+                                            <input
+                                                type="checkbox"
+                                                name="challenge"
+                                                value={option}
+                                                className="sr-only"
+                                                checked={isSelected}
+                                                onChange={() => {
+                                                    if (isSelected) {
+                                                        setSelectedChallenges(prev => prev.filter(c => c !== option))
+                                                    } else {
+                                                        setSelectedChallenges(prev => [...prev, option])
+                                                    }
+                                                }}
+                                            />
                                             <div className="flex items-center justify-between w-full">
                                                 <span className={`text-sm transition-colors ${isSelected ? 'text-white font-semibold' : 'text-slate-300 group-hover:text-white'}`}>{option}</span>
-                                                <div className={`w-5 h-5 rounded-full border-2 flex flex-shrink-0 items-center justify-center transition-all ml-4 ${isSelected ? 'border-blue-500 bg-blue-500' : 'border-slate-600'
+                                                <div className={`w-5 h-5 rounded-md border-2 flex flex-shrink-0 items-center justify-center transition-all ml-4 ${isSelected ? 'border-blue-500 bg-blue-500' : 'border-slate-600'
                                                     }`}>
-                                                    {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
+                                                    {isSelected && <div className="w-2 h-2 rounded-sm bg-white" />}
                                                 </div>
                                             </div>
                                         </label>
@@ -238,32 +250,44 @@ export default function AuditoriaFormPage() {
                                 </div>
                                 <div>
                                     <h2 className="text-2xl font-semibold">3. Seguridad y Acceso</h2>
-                                    <p className="text-slate-400 text-sm mt-1">¿Cómo gestionan actualmente los permisos de su equipo? (Selecciona una)</p>
+                                    <p className="text-slate-400 text-sm mt-1">¿Cómo gestionan actualmente los permisos de su equipo? (Selecciona varios si aplica)</p>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {[
                                     "Todos tienen acceso a casi todo.",
                                     "Usamos contraseñas compartidas.",
                                     "Tenemos niveles de acceso, pero son difíciles de administrar.",
                                     "No tengo certeza de quién modificó qué dato."
                                 ].map((option, i) => {
-                                    const isSelected = selectedSecurity === option;
+                                    const isSelected = selectedSecurities.includes(option);
                                     return (
                                         <label
                                             key={i}
-                                            onClick={() => setSelectedSecurity(option)}
                                             className={`relative flex p-4 cursor-pointer rounded-xl border transition-all group ${isSelected
-                                                    ? 'bg-emerald-500/15 border-emerald-500/60 shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]'
-                                                    : 'border-white/5 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30'
+                                                ? 'bg-emerald-500/15 border-emerald-500/60 shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]'
+                                                : 'border-white/5 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30'
                                                 }`}
                                         >
-                                            <input type="radio" name="security_access" value={option} required className="sr-only" readOnly checked={isSelected} />
+                                            <input
+                                                type="checkbox"
+                                                name="security_access"
+                                                value={option}
+                                                className="sr-only"
+                                                checked={isSelected}
+                                                onChange={() => {
+                                                    if (isSelected) {
+                                                        setSelectedSecurities(prev => prev.filter(c => c !== option))
+                                                    } else {
+                                                        setSelectedSecurities(prev => [...prev, option])
+                                                    }
+                                                }}
+                                            />
                                             <div className="flex items-center justify-between w-full">
                                                 <span className={`text-sm transition-colors ${isSelected ? 'text-white font-semibold' : 'text-slate-300 group-hover:text-white'}`}>{option}</span>
-                                                <div className={`w-5 h-5 rounded-full border-2 flex flex-shrink-0 items-center justify-center transition-all ml-4 ${isSelected ? 'border-emerald-500 bg-emerald-500' : 'border-slate-600'
+                                                <div className={`w-5 h-5 rounded-md border-2 flex flex-shrink-0 items-center justify-center transition-all ml-4 ${isSelected ? 'border-emerald-500 bg-emerald-500' : 'border-slate-600'
                                                     }`}>
-                                                    {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
+                                                    {isSelected && <div className="w-2 h-2 rounded-sm bg-white" />}
                                                 </div>
                                             </div>
                                         </label>
@@ -340,72 +364,72 @@ export default function AuditoriaFormPage() {
                                     <p className="text-slate-400 text-sm mt-1">Para enviarte tu reporte personalizado.</p>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div ref={companyRef} className="transition-all">
-                                    <label className="block text-sm font-medium text-slate-300 mb-2" htmlFor="company_name">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div ref={companyRef}>
+                                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2" htmlFor="company_name">
                                         Nombre de la Empresa
                                     </label>
-                                    <input required type="text" name="company_name" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none" placeholder="Tu Empresa S.A." />
+                                    <input required type="text" name="company_name" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none placeholder:text-slate-600" placeholder="Tu Empresa S.A." />
                                 </div>
-                                <div ref={industryRef} className="transition-all">
-                                    <label className="block text-sm font-medium text-slate-300 mb-2" htmlFor="industry">
+                                <div ref={industryRef}>
+                                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2" htmlFor="industry">
                                         Sector/Industria
                                     </label>
-                                    <input required type="text" name="industry" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none" placeholder="Tecnología, Retail, etc." />
+                                    <input required type="text" name="industry" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none placeholder:text-slate-600" placeholder="Tecnología, Retail, etc." />
                                 </div>
-                                <div ref={teamSizeRef} className="transition-all">
-                                    <label className="block text-sm font-medium text-slate-300 mb-2" htmlFor="team_size">
+                                <div ref={teamSizeRef}>
+                                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2" htmlFor="team_size">
                                         Tamaño del equipo
                                     </label>
                                     <div className="relative">
-                                        <select required name="team_size" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none appearance-none">
-                                            <option value="" className="text-slate-800">Selecciona una opción</option>
+                                        <select required name="team_size" defaultValue="" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none appearance-none cursor-pointer">
+                                            <option value="" disabled>Selecciona una opción</option>
                                             <option value="1-10" className="text-slate-800">1 a 10 personas</option>
                                             <option value="10-50" className="text-slate-800">10 a 50 personas</option>
                                             <option value="50+" className="text-slate-800">Más de 50 personas</option>
                                         </select>
+                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                                            <ChevronDown className="w-4 h-4" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div ref={contactEmailRef} className="col-span-2 transition-all">
-                                    <label className="block text-sm font-medium text-slate-300 mb-2" htmlFor="contact_email">
+                                <div ref={contactEmailRef}>
+                                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2" htmlFor="contact_email">
                                         Correo Profesional
                                     </label>
-                                    <input required type="email" name="contact_email" placeholder="tu@empresa.com" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none" />
+                                    <input required type="email" name="contact_email" placeholder="tu@empresa.com" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none placeholder:text-slate-600" />
                                 </div>
-                                <div ref={contactPhoneRef} className="col-span-2 transition-all">
-                                    <label className="block text-sm font-medium text-slate-300 mb-2 flex items-center gap-2">
-                                        <Phone className="w-4 h-4 text-pink-400" />
+                                <div ref={contactPhoneRef} className="sm:col-span-2">
+                                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-2">
                                         Número de Contacto
                                     </label>
-                                    <div className="flex gap-3">
-                                        <select name="phone_code" className="px-3 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none appearance-none text-sm font-bold min-w-[140px] cursor-pointer">
-                                            <option value="+1" className="text-slate-800">🇺🇸 +1 USA</option>
-                                            <option value="+1" className="text-slate-800">🇨🇦 +1 Canada</option>
-                                            <option value="+52" className="text-slate-800">🇲🇽 +52 México</option>
-                                            <option value="+54" className="text-slate-800">🇦🇷 +54 Argentina</option>
-                                            <option value="+56" className="text-slate-800">🇨🇱 +56 Chile</option>
-                                            <option value="+57" className="text-slate-800">🇨🇴 +57 Colombia</option>
-                                            <option value="+51" className="text-slate-800">🇵🇪 +51 Perú</option>
-                                            <option value="+58" className="text-slate-800">🇻🇪 +58 Venezuela</option>
-                                            <option value="+593" className="text-slate-800">🇪🇨 +593 Ecuador</option>
-                                            <option value="+591" className="text-slate-800">🇧🇴 +591 Bolivia</option>
-                                            <option value="+595" className="text-slate-800">🇵🇾 +595 Paraguay</option>
-                                            <option value="+598" className="text-slate-800">🇺🇾 +598 Uruguay</option>
-                                            <option value="+506" className="text-slate-800">🇨🇷 +506 Costa Rica</option>
-                                            <option value="+503" className="text-slate-800">🇸🇻 +503 El Salvador</option>
-                                            <option value="+502" className="text-slate-800">🇬🇹 +502 Guatemala</option>
-                                            <option value="+504" className="text-slate-800">🇭🇳 +504 Honduras</option>
-                                            <option value="+505" className="text-slate-800">🇳🇮 +505 Nicaragua</option>
-                                            <option value="+507" className="text-slate-800">🇵🇦 +507 Panamá</option>
-                                            <option value="+1809" className="text-slate-800">🇩🇴 +1809 R. Dominicana</option>
-                                            <option value="+34" className="text-slate-800">🇪🇸 +34 España</option>
-                                            <option value="+55" className="text-slate-800">🇧🇷 +55 Brasil</option>
-                                            <option value="+44" className="text-slate-800">🇬🇧 +44 UK</option>
-                                            <option value="+49" className="text-slate-800">🇩🇪 +49 Alemania</option>
-                                            <option value="+33" className="text-slate-800">🇫🇷 +33 Francia</option>
-                                            <option value="+39" className="text-slate-800">🇮🇹 +39 Italia</option>
-                                            <option value="+351" className="text-slate-800">🇵🇹 +351 Portugal</option>
-                                        </select>
+                                    <div className="flex flex-col sm:flex-row gap-3">
+                                        <div className="relative flex-shrink-0">
+                                            <select
+                                                name="phone_code"
+                                                defaultValue="+591"
+                                                className="w-full sm:w-[160px] px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none appearance-none text-sm font-medium cursor-pointer"
+                                            >
+                                                <option value="+591" className="text-slate-800">🇧🇴 Bolivia (+591)</option>
+                                                <option value="+1" className="text-slate-800">🇺🇸 USA (+1)</option>
+                                                <option value="+52" className="text-slate-800">🇲🇽 México (+52)</option>
+                                                <option value="+34" className="text-slate-800">🇪🇸 España (+34)</option>
+                                                <option value="+54" className="text-slate-800">🇦🇷 Argentina (+54)</option>
+                                                <option value="+56" className="text-slate-800">🇨🇱 Chile (+56)</option>
+                                                <option value="+57" className="text-slate-800">🇨🇴 Colombia (+57)</option>
+                                                <option value="+51" className="text-slate-800">🇵🇪 Perú (+51)</option>
+                                                <option value="+58" className="text-slate-800">🇻🇪 Venezuela (+58)</option>
+                                                <option value="+593" className="text-slate-800">🇪🇨 Ecuador (+593)</option>
+                                                <option value="+595" className="text-slate-800">🇵🇾 Paraguay (+595)</option>
+                                                <option value="+598" className="text-slate-800">🇺🇾 Uruguay (+598)</option>
+                                                <option value="+506" className="text-slate-800">🇨🇷 Costa Rica (+506)</option>
+                                                <option value="+502" className="text-slate-800">🇬🇹 Guatemala (+502)</option>
+                                                <option value="+507" className="text-slate-800">🇵🇦 Panamá (+507)</option>
+                                            </select>
+                                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                                                <ChevronDown className="w-4 h-4" />
+                                            </div>
+                                        </div>
                                         <input
                                             required
                                             type="tel"
@@ -414,7 +438,7 @@ export default function AuditoriaFormPage() {
                                             className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none placeholder:text-slate-600"
                                         />
                                     </div>
-                                    <p className="text-[10px] text-slate-600 mt-1.5 font-medium">Incluye tu código de país para facilitar el contacto directo.</p>
+                                    <p className="text-[10px] text-slate-500 mt-2 ml-1">Tu información está protegida por encriptación Nextrova.</p>
                                 </div>
                             </div>
                         </div>
@@ -442,7 +466,7 @@ export default function AuditoriaFormPage() {
                             </button>
                             <p className="text-center text-sm text-slate-500 mt-6 flex justify-center items-center gap-2">
                                 <ShieldCheck className="w-4 h-4" />
-                                Tus datos están encriptados y protegidos por SecureTech.
+                                Tus datos están encriptados y protegidos por Nextrova.
                             </p>
                         </div>
                     </form>

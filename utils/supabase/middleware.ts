@@ -33,7 +33,12 @@ export async function updateSession(request: NextRequest) {
 
     const {
         data: { user },
+        error
     } = await supabase.auth.getUser()
+
+    if (error) {
+        console.error('Auth middleware error:', error.message)
+    }
 
     // Protect specific dashboard routes (like auditoria)
     if (request.nextUrl.pathname.startsWith('/dashboard/auditoria')) {

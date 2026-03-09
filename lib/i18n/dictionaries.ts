@@ -3,17 +3,16 @@ export const dictionaries = {
         nav: {
             features: "Features",
             solutions: "Solutions",
-            pricing: "Pricing",
             dashboards: "Dashboards",
             login: "Log in",
             getStarted: "Free Audit",
         },
         hero: {
             badge: "Enterprise-Grade Security Standards",
-            title1: "Software Systems Engineered for",
-            title2: "Absolute Trust.",
+            title1: "Software that Evolves with",
+            title2: "Your Business.",
             subtitle: "We build robust, secure, and scalable reporting and user management systems. Tailored to your exact requirements with uncompromising data protection.",
-            ctaPrimary: "Get a Free Audit",
+            ctaPrimary: "Get a Free Audit — Only 5 slots left",
             ctaSecondary: "View Dashboards",
         },
         stats: {
@@ -22,8 +21,8 @@ export const dictionaries = {
             stat1Label: "Systems Delivered",
             stat2Value: "+10k",
             stat2Label: "Hours Saved",
-            stat3Value: "+1M",
-            stat3Label: "Protected Users",
+            stat3Value: "+500",
+            stat3Label: "Active Users",
         },
         features: {
             title: "Uncompromising Security & Control",
@@ -56,30 +55,131 @@ export const dictionaries = {
             moduleReports: "Advanced Analytics",
             emailPlaceholder: "Enter your work email",
             submit: "Request Free Audit & Quote",
+            pricing: {
+                title: "Flexible Architecture, Tailored Pricing",
+                subtitle: "We build systems that adapt to your scale. Pricing depends on module complexity, data volume, and infrastructure requirements.",
+                starter: {
+                    name: "Starter",
+                    price: "Consultation",
+                    desc: "Ideal for startups and small businesses looking to digitize their core operations.",
+                    features: [
+                        "Up to 3 custom modules",
+                        "Basic reporting dashboard",
+                        "Email support",
+                        "Managed hosting included",
+                        "Annual security backups"
+                    ],
+                    cta: "Start Now"
+                },
+                business: {
+                    name: "Business",
+                    price: "Tailored",
+                    desc: "For growing companies requiring granular control and process automation.",
+                    features: [
+                        "Up to 7 custom modules",
+                        "Advanced analytics suite",
+                        "Role-Based Access (RBAC)",
+                        "Priority support",
+                        "External API integrations"
+                    ],
+                    cta: "Request Demo"
+                },
+                enterprise: {
+                    name: "Enterprise",
+                    price: "Strategic",
+                    desc: "Robust solutions for corporations with complex architectural needs.",
+                    features: [
+                        "Unlimited modules",
+                        "Advanced Predictive AI",
+                        "Dedicated infrastructure",
+                        "24/7 Dedicated support",
+                        "99.99% Uptime SLA"
+                    ],
+                    cta: "Contact Sales"
+                }
+            },
             success: "Thank you! We'll contact you shortly for your free audit.",
         },
+        portfolio: {
+            title: "Success Stories",
+            subtitle: "Tactical solutions designed for business growth.",
+            projects: [
+                {
+                    title: "Sales Management System",
+                    client: "Huawei (Award Winning)",
+                    desc: "Comprehensive platform for tracking real-time sales performance, commission automation, and salesperson performance metrics.",
+                    status: "Completed"
+                },
+                {
+                    title: "Real Estate CRM Pro",
+                    client: "Grupo Inmueble S.A.",
+                    desc: "End-to-end CRM for lead management, customer follow-up, and automated sales closing for real estate agencies.",
+                    status: "Completed"
+                },
+                {
+                    title: "Advanced Sales Dashboard",
+                    client: "Global Logistics",
+                    desc: "Interactive panel with direct KPIs, sales conversion tracking, and real-time visualization of individual and team targets.",
+                    status: "Completed"
+                }
+            ]
+        },
+        testimonials: {
+            title: "What our clients say",
+            trust: "More than 50 companies trust our architecture",
+            items: [
+                {
+                    text: "Nextrova completely transformed our inventory management. We went from error-prone spreadsheets to an automated system that saves us 15 hours a week.",
+                    author: "Carlos Rodríguez",
+                    role: "CEO of Rapid Logistics",
+                    avatar: "CR"
+                },
+                {
+                    text: "Security is our number one priority, and Nextrova gave us the peace of mind we were looking for with their granular access controls and real-time auditing.",
+                    author: "Elena Martínez",
+                    role: "Operations Director, Retail Group",
+                    avatar: "EM"
+                },
+                {
+                    text: "The free audit process was the starting point. They showed us exactly where we were losing money and how their software would solve it.",
+                    author: "Andrés Silva",
+                    role: "Founder of TechSolutions",
+                    avatar: "AS"
+                }
+            ]
+        },
+        about: {
+            title: "About Nextrova",
+            p1: "At Nextrova, we don't just write code; we build the technological foundations upon which modern companies scale.",
+            p2: "We were born with the vision to democratize high-end enterprise software. We believe every business deserves a robust, secure architecture that, above all, evolves at the same pace as its goals.",
+            mission: {
+                title: "Mission",
+                desc: "Drive operational efficiency through intelligent and secure software solutions."
+            },
+            vision: {
+                title: "Vision",
+                desc: "To be the leading technological ally for digital transformation in Latin America."
+            }
+        },
         footer: {
-            rights: "© 2026 SecureTech Software Services. All rights reserved. Building trust through code.",
+            rights: "© 2026 Nextrova Software Services. All rights reserved. Software that evolves.",
         },
         dashboard: {
             sidebar: {
-                title: "SecureTech CRM",
-                subtitle: "Enterprise Workspace",
-                mainNav: "Main Navigation",
+                title: "Nextrova",
                 commandCenter: "Command Center",
-                reports: "Reports & Analytics",
-                users: "User Management",
-                settings: "System Settings",
-                security: "Security AI",
-                backToSite: "Back to Home",
-                logout: "Log Out",
-                status: "All systems operational",
-                admin: "Admin user",
+                reports: "Reports",
+                users: "Users",
+                settings: "Configuration",
+                clientControl: "Client Control",
+                backToSite: "Back to Site",
+                mainNav: "Navigation",
+                logout: "Sign Out",
                 logoutConfirm: {
-                    title: "Log Out?",
-                    message: "Are you sure you want to sign out of your current session?",
-                    confirm: "Log Out",
-                    cancel: "Cancel"
+                    title: "End Session?",
+                    message: "You are about to sign out. Are you sure you want to continue?",
+                    confirm: "Yes, Sign Out",
+                    cancel: "Stay Here"
                 }
             },
             commandCenter: {
@@ -268,9 +368,10 @@ export const dictionaries = {
                 nextStepTitle: "Next step:",
                 nextStepDesc: "Our team will review your case and reach out via ",
                 nextStepContact: "WhatsApp",
-                backToHome: "Back to Home"            },
+                backToHome: "Back to Home"
+            },
             dashboard: {
-                title: "Audit Records",
+                title: "Client Control",
                 subtitle: "Admin view of all prospects and clients who completed the form.",
                 table: {
                     company: "Company / Contact",
@@ -279,9 +380,21 @@ export const dictionaries = {
                     modules: "Modules of Interest",
                     date: "Date",
                     actions: "Actions",
-                    noRecords: "No audit records yet.",
-                    email: "Email"
-                }            }
+                    noRecords: "No records found.",
+                    email: "Send Email"
+                },
+                details: {
+                    title: "Lead Details",
+                    companyInfo: "Company Information",
+                    contactInfo: "Contact Information",
+                    formResponses: "Form Responses",
+                    industry: "Industry",
+                    teamSize: "Team Size",
+                    mainChallenge: "Main Challenge",
+                    modulesInterest: "Modules of Interest",
+                    close: "Close"
+                }
+            },
         }
         // end auditoria translations
 
@@ -290,17 +403,16 @@ export const dictionaries = {
         nav: {
             features: "Características",
             solutions: "Soluciones",
-            pricing: "Precios",
             dashboards: "Paneles",
             login: "Iniciar Sesión",
             getStarted: "Auditoría Gratis",
         },
         hero: {
             badge: "Estándares de Seguridad Empresarial",
-            title1: "Sistemas de Software Diseñados para",
-            title2: "Confianza Absoluta.",
+            title1: "Software que Evoluciona con",
+            title2: "Tu Negocio.",
             subtitle: "Construimos sistemas robustos, seguros y escalables de reportes y gestión. Adaptados a tus requerimientos exactos con protección de datos intransigente.",
-            ctaPrimary: "Obtener Auditoría Gratuita",
+            ctaPrimary: "Agenda tu Auditoría Gratuita — Solo 5 espacios disponibles",
             ctaSecondary: "Ver Paneles",
         },
         stats: {
@@ -309,8 +421,8 @@ export const dictionaries = {
             stat1Label: "Sistemas Entregados",
             stat2Value: "+10k",
             stat2Label: "Horas Ahorradas",
-            stat3Value: "+1M",
-            stat3Label: "Usuarios Protegidos",
+            stat3Value: "+500",
+            stat3Label: "Usuarios Activos",
         },
         features: {
             title: "Seguridad y Control Intransigentes",
@@ -343,30 +455,131 @@ export const dictionaries = {
             moduleReports: "Analítica Avanzada",
             emailPlaceholder: "Ingresa tu email de trabajo",
             submit: "Solicitar Auditoría y Cotización",
+            pricing: {
+                title: "Arquitectura Flexible, Precios a Medida",
+                subtitle: "Construimos sistemas que se adaptan a tu escala. El costo depende de la complejidad de los módulos, volumen de datos y requerimientos técnicos.",
+                starter: {
+                    name: "Básico",
+                    price: "Consultar",
+                    desc: "Ideal para startups y pequeños negocios que buscan digitalizar su operativa principal.",
+                    features: [
+                        "Hasta 3 módulos personalizados",
+                        "Panel de reportes básico",
+                        "Soporte vía Email",
+                        "Hosting gestionado incluido",
+                        "Respaldos de seguridad anuales"
+                    ],
+                    cta: "Empezar Ahora"
+                },
+                business: {
+                    name: "Empresarial",
+                    price: "A Medida",
+                    desc: "Para empresas en crecimiento que requieren mayor control y automatización de procesos.",
+                    features: [
+                        "Hasta 7 módulos personalizados",
+                        "Panel de analítica avanzada",
+                        "Gestión de roles (RBAC)",
+                        "Soporte prioritario",
+                        "Integraciones con APIs externas"
+                    ],
+                    cta: "Solicitar Demo"
+                },
+                enterprise: {
+                    name: "Corporativo",
+                    price: "Estratégico",
+                    desc: "Soluciones robustas para corporaciones con necesidades complejas de arquitectura.",
+                    features: [
+                        "Módulos ilimitados",
+                        "IA Predictiva avanzada",
+                        "Infraestructura independiente",
+                        "Soporte 24/7 dedicado",
+                        "SLA de 99.99% de disponibilidad"
+                    ],
+                    cta: "Contactar Ventas"
+                }
+            },
             success: "¡Gracias! Te contactaremos a la brevedad para tu auditoría gratuita.",
         },
+        portfolio: {
+            title: "Casos de Éxito",
+            subtitle: "Soluciones tácticas diseñadas para el crecimiento empresarial.",
+            projects: [
+                {
+                    title: "Sistema de Control de Ventas",
+                    client: "Huawei (Galardonado)",
+                    desc: "Plataforma integral para el seguimiento de ventas en tiempo real, automatización de comisiones y métricas de rendimiento por vendedor.",
+                    status: "Completado"
+                },
+                {
+                    title: "CRM Inmobiliario Pro",
+                    client: "Grupo Inmueble S.A.",
+                    desc: "CRM completo para la gestión de prospectos (leads), seguimiento a clientes y cierres de venta automatizados para inmobiliarias.",
+                    status: "Completado"
+                },
+                {
+                    title: "Dashboard de Gestión Comercial",
+                    client: "Global Logistics",
+                    desc: "Panel interactivo con KPIs directos, seguimiento de conversión de ventas y visualización de metas individuales y por equipo.",
+                    status: "Completado"
+                }
+            ]
+        },
+        testimonials: {
+            title: "Lo que dicen nuestros clientes",
+            trust: "Más de 50 empresas confían en nuestra arquitectura",
+            items: [
+                {
+                    text: "Nextrova transformó completamente nuestra gestión de inventarios. Pasamos de hojas de cálculo propensas a errores a un sistema automatizado que nos ahorra 15 horas semanales.",
+                    author: "Carlos Rodríguez",
+                    role: "CEO de Logística Rápida",
+                    avatar: "CR"
+                },
+                {
+                    text: "La seguridad es nuestra prioridad número uno, y Nextrova nos brindó la tranquilidad que buscábamos con sus controles de acceso granulares y auditoría en tiempo real.",
+                    author: "Elena Martínez",
+                    role: "Directora de Operaciones, Retail Group",
+                    avatar: "EM"
+                },
+                {
+                    text: "El proceso de auditoría gratuita fue el punto de partida. Nos mostraron exactamente dónde estábamos perdiendo dinero y cómo su software lo resolvería.",
+                    author: "Andrés Silva",
+                    role: "Fundador de TechSolutions",
+                    avatar: "AS"
+                }
+            ]
+        },
+        about: {
+            title: "Sobre Nextrova",
+            p1: "En Nextrova, no solo escribimos código; construimos los cimientos tecnológicos sobre los cuales escalan las empresas modernas.",
+            p2: "Nacimos con la visión de democratizar el software empresarial de alta gama. Creemos que cada negocio merece una arquitectura robusta, segura y, sobre todo, que **evolucione** al mismo ritmo que sus metas.",
+            mission: {
+                title: "Misión",
+                desc: "Impulsar la eficiencia operativa mediante soluciones de software inteligentes y seguras."
+            },
+            vision: {
+                title: "Visión",
+                desc: "Ser el aliado tecnológico referente para la transformación digital en Latinoamérica."
+            }
+        },
         footer: {
-            rights: "© 2026 SecureTech Software Services. Todos los derechos reservados.",
+            rights: "© 2026 Nextrova Software Services. Todos los derechos reservados.",
         },
         dashboard: {
             sidebar: {
-                title: "SecureTech CRM",
-                subtitle: "Entorno Empresarial",
-                mainNav: "Navegación Principal",
-                commandCenter: "Panel de Control",
-                reports: "Reportes y Analíticas",
-                users: "Gestión de Usuarios",
-                settings: "Ajustes del Sistema",
-                security: "Seguridad IA",
-                backToSite: "Volver a Inicio",
+                title: "Nextrova",
+                commandCenter: "Centro de Mando",
+                reports: "Reportes",
+                users: "Usuarios",
+                settings: "Configuración",
+                clientControl: "Control de Clientes",
+                backToSite: "Volver al Sitio",
+                mainNav: "Navegación",
                 logout: "Cerrar Sesión",
-                status: "Sistemas operativos",
-                admin: "Usuario Admin",
                 logoutConfirm: {
-                    title: "¿Cerrar sesión?",
-                    message: "¿Estás seguro de que deseas salir de tu cuenta actual?",
-                    confirm: "Cerrar Sesión",
-                    cancel: "Cancelar"
+                    title: "¿Cerrar Sesión?",
+                    message: "Estás a punto de salir del panel. ¿Estás seguro de que deseas continuar?",
+                    confirm: "Sí, Salir",
+                    cancel: "Mantenerme aquí"
                 }
             },
             commandCenter: {
@@ -547,7 +760,7 @@ export const dictionaries = {
                 },
                 submit: "Solicitar Auditoría Gratuita",
                 loading: "Procesando solicitud...",
-                encryptionNote: "Tus datos están encriptados y protegidos por SecureTech."
+                encryptionNote: "Tus datos están encriptados y protegidos por Nextrova."
             },
             success: {
                 title: "¡Auditoría Solicitada!",
@@ -558,7 +771,7 @@ export const dictionaries = {
                 backToHome: "Volver al Inicio"
             },
             dashboard: {
-                title: "Registros de Auditoría",
+                title: "Control de Clientes",
                 subtitle: "Vista de administrador de todos los prospectos y clientes que completaron el formulario.",
                 table: {
                     company: "Empresa / Contacto",
@@ -567,10 +780,21 @@ export const dictionaries = {
                     modules: "Módulos de Interés",
                     date: "Fecha",
                     actions: "Acciones",
-                    noRecords: "No hay registros de auditoría todavía.",
-                    email: "Email"
+                    noRecords: "No se encontraron registros.",
+                    email: "Enviar Email"
+                },
+                details: {
+                    title: "Detalles del Prospecto",
+                    companyInfo: "Información de la Empresa",
+                    contactInfo: "Información de Contacto",
+                    formResponses: "Respuestas del Formulario",
+                    industry: "Sector / Industria",
+                    teamSize: "Tamaño del Equipo",
+                    mainChallenge: "Desafío Principal",
+                    modulesInterest: "Módulos de Interés",
+                    close: "Cerrar"
                 }
-            }
+            },
         }
         // end auditoria translations
     }
