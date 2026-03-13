@@ -5,14 +5,14 @@ export const dictionaries = {
             solutions: "Solutions",
             dashboards: "Dashboards",
             login: "Log in",
-            getStarted: "Free Audit",
+            getStarted: "Free Diagnosis",
         },
         hero: {
             badge: "Enterprise-Grade Security Standards",
             title1: "Software that Evolves with",
             title2: "Your Business.",
             subtitle: "We build robust, secure, and scalable reporting and user management systems. Tailored to your exact requirements with uncompromising data protection.",
-            ctaPrimary: "Get a Free Audit — Only 5 slots left",
+            ctaPrimary: "Get your Free Diagnosis — Only 5 slots left",
             ctaSecondary: "View Dashboards",
         },
         stats: {
@@ -32,13 +32,13 @@ export const dictionaries = {
             f2Title: "Comprehensive Reporting",
             f2Desc: "Real-time interactive dashboards and downloadable reports give you complete visibility into operations, sales, and analytics.",
             f3Title: "Reliable Hosting & Backups",
-            f3Desc: "We host your customized application and perform rigorous annual backups to guarantee 99.99% uptime and data preservation.",
+            f3Desc: "We host your customized application and perform automatic daily backups to guarantee 99.99% uptime and data preservation.",
         },
         steps: {
             title: "How We Transform Your Business",
             s1Title: "1. Tell Us What You Need",
             s1Desc: "Select the modules your business requires using our quick quote form.",
-            s2Title: "2. Free System Audit",
+            s2Title: "2. Free Digital Diagnosis",
             s2Desc: "We review your current processes and provide a free roadmap for improvement.",
             s3Title: "3. Custom Proposal",
             s3Desc: "Receive a tailored plan and pricing for your new software architecture.",
@@ -54,7 +54,7 @@ export const dictionaries = {
             moduleCustomers: "CRM & Customers",
             moduleReports: "Advanced Analytics",
             emailPlaceholder: "Enter your work email",
-            submit: "Request Free Audit & Quote",
+            submit: "Request Free Diagnosis & Quote",
             pricing: {
                 title: "Flexible Architecture, Tailored Pricing",
                 subtitle: "We build systems that adapt to your scale. Pricing depends on module complexity, data volume, and infrastructure requirements.",
@@ -98,7 +98,7 @@ export const dictionaries = {
                     cta: "Contact Sales"
                 }
             },
-            success: "Thank you! We'll contact you shortly for your free audit.",
+            success: "Thank you! We'll contact you shortly for your free diagnosis.",
         },
         portfolio: {
             title: "Success Stories",
@@ -129,19 +129,19 @@ export const dictionaries = {
             trust: "More than 50 companies trust our architecture",
             items: [
                 {
-                    text: "Nextrova completely transformed our inventory management. We went from error-prone spreadsheets to an automated system that saves us 15 hours a week.",
+                    text: "Systrategy completely transformed our inventory management. We went from error-prone spreadsheets to an automated system that saves us 15 hours a week.",
                     author: "Carlos Rodríguez",
                     role: "CEO of Rapid Logistics",
                     avatar: "CR"
                 },
                 {
-                    text: "Security is our number one priority, and Nextrova gave us the peace of mind we were looking for with their granular access controls and real-time auditing.",
+                    text: "Security is our number one priority, and Systrategy gave us the peace of mind we were looking for with their granular access controls and real-time auditing.",
                     author: "Elena Martínez",
                     role: "Operations Director, Retail Group",
                     avatar: "EM"
                 },
                 {
-                    text: "The free audit process was the starting point. They showed us exactly where we were losing money and how their software would solve it.",
+                    text: "The free diagnosis process was the starting point. They showed us exactly where we were losing money and how their software would solve it.",
                     author: "Andrés Silva",
                     role: "Founder of TechSolutions",
                     avatar: "AS"
@@ -149,8 +149,8 @@ export const dictionaries = {
             ]
         },
         about: {
-            title: "About Nextrova",
-            p1: "At Nextrova, we don't just write code; we build the technological foundations upon which modern companies scale.",
+            title: "About Systrategy",
+            p1: "At Systrategy, we don't just write code; we build the technological foundations upon which modern companies scale.",
             p2: "We were born with the vision to democratize high-end enterprise software. We believe every business deserves a robust, secure architecture that, above all, evolves at the same pace as its goals.",
             mission: {
                 title: "Mission",
@@ -162,11 +162,11 @@ export const dictionaries = {
             }
         },
         footer: {
-            rights: "© 2026 Nextrova Software Services. All rights reserved. Software that evolves.",
+            rights: "© 2026 Systrategy — Software Inteligente y Visual. All rights reserved.",
         },
         dashboard: {
             sidebar: {
-                title: "Nextrova",
+                title: "Systrategy",
                 commandCenter: "Command Center",
                 reports: "Reports",
                 users: "Users",
@@ -291,8 +291,8 @@ export const dictionaries = {
         // ======== Auditoría Translations ========
         auditoria: {
             form: {
-                badge: "Free Audit",
-                title: "Technical Audit",
+                badge: "Free Diagnosis",
+                title: "Digital Diagnosis",
                 description: "Fill out this quick form to identify your operational pain points and discover how a custom system can scale your business.",
                 backToHome: "Back to Home",
                 sections: {
@@ -358,12 +358,12 @@ export const dictionaries = {
                         phoneNote: "Include your country code for easier direct contact."
                     }
                 },
-                submit: "Request Free Audit",
+                submit: "Request Free Diagnosis",
                 loading: "Processing request...",
-                encryptionNote: "Your data is encrypted and protected by SecureTech."
+                encryptionNote: "Your data is encrypted and protected by Systrategy."
             },
             success: {
-                title: "Audit Requested!",
+                title: "Diagnosis Requested!",
                 received: "We’ve received your responses successfully.",
                 nextStepTitle: "Next step:",
                 nextStepDesc: "Our team will review your case and reach out via ",
@@ -405,14 +405,14 @@ export const dictionaries = {
             solutions: "Soluciones",
             dashboards: "Paneles",
             login: "Iniciar Sesión",
-            getStarted: "Auditoría Gratis",
+            getStarted: "Diagnóstico Gratis",
         },
         hero: {
             badge: "Estándares de Seguridad Empresarial",
             title1: "Software que Evoluciona con",
             title2: "Tu Negocio.",
             subtitle: "Construimos sistemas robustos, seguros y escalables de reportes y gestión. Adaptados a tus requerimientos exactos con protección de datos intransigente.",
-            ctaPrimary: "Agenda tu Auditoría Gratuita — Solo 5 espacios disponibles",
+            ctaPrimary: "Agenda tu Diagnóstico Gratuito — Solo 5 espacios disponibles",
             ctaSecondary: "Ver Paneles",
         },
         stats: {
@@ -432,13 +432,13 @@ export const dictionaries = {
             f2Title: "Reportes Completos",
             f2Desc: "Paneles interactivos en tiempo real y reportes descargables te dan visibilidad total de operaciones, ventas y analíticas.",
             f3Title: "Hosting Confiable y Respaldos",
-            f3Desc: "Alojamos tu aplicación y realizamos respaldos anuales rigurosos para garantizar 99.99% de accesibilidad y preservación de datos.",
+            f3Desc: "Alojamos tu aplicación y realizamos respaldos automáticos diarios para garantizar 99.99% de accesibilidad y preservación de datos.",
         },
         steps: {
             title: "Cómo Transformamos tu Negocio",
             s1Title: "1. Cuéntanos qué necesitas",
             s1Desc: "Selecciona los módulos que tu negocio requiere usando nuestro formulario rápido.",
-            s2Title: "2. Auditoría Gratuita",
+            s2Title: "2. Diagnóstico Gratuito",
             s2Desc: "Revisamos tus procesos actuales y te entregamos una hoja de ruta de mejora gratis.",
             s3Title: "3. Propuesta a Medida",
             s3Desc: "Recibe un plan adaptado y precios para tu nueva arquitectura de software.",
@@ -454,7 +454,7 @@ export const dictionaries = {
             moduleCustomers: "CRM y Clientes",
             moduleReports: "Analítica Avanzada",
             emailPlaceholder: "Ingresa tu email de trabajo",
-            submit: "Solicitar Auditoría y Cotización",
+            submit: "Solicitar Diagnóstico y Cotización",
             pricing: {
                 title: "Arquitectura Flexible, Precios a Medida",
                 subtitle: "Construimos sistemas que se adaptan a tu escala. El costo depende de la complejidad de los módulos, volumen de datos y requerimientos técnicos.",
@@ -467,7 +467,7 @@ export const dictionaries = {
                         "Panel de reportes básico",
                         "Soporte vía Email",
                         "Hosting gestionado incluido",
-                        "Respaldos de seguridad anuales"
+                        "Respaldos automáticos diarios"
                     ],
                     cta: "Empezar Ahora"
                 },
@@ -498,7 +498,7 @@ export const dictionaries = {
                     cta: "Contactar Ventas"
                 }
             },
-            success: "¡Gracias! Te contactaremos a la brevedad para tu auditoría gratuita.",
+            success: "¡Gracias! Te contactaremos a la brevedad para tu diagnóstico gratuito.",
         },
         portfolio: {
             title: "Casos de Éxito",
@@ -529,19 +529,19 @@ export const dictionaries = {
             trust: "Más de 50 empresas confían en nuestra arquitectura",
             items: [
                 {
-                    text: "Nextrova transformó completamente nuestra gestión de inventarios. Pasamos de hojas de cálculo propensas a errores a un sistema automatizado que nos ahorra 15 horas semanales.",
+                    text: "Systrategy transformó completamente nuestra gestión de inventarios. Pasamos de hojas de cálculo propensas a errores a un sistema automatizado que nos ahorra 15 horas semanales.",
                     author: "Carlos Rodríguez",
                     role: "CEO de Logística Rápida",
                     avatar: "CR"
                 },
                 {
-                    text: "La seguridad es nuestra prioridad número uno, y Nextrova nos brindó la tranquilidad que buscábamos con sus controles de acceso granulares y auditoría en tiempo real.",
+                    text: "La seguridad es nuestra prioridad número uno, y Systrategy nos brindó la tranquilidad que buscábamos con sus controles de acceso granulares y auditoría en tiempo real.",
                     author: "Elena Martínez",
                     role: "Directora de Operaciones, Retail Group",
                     avatar: "EM"
                 },
                 {
-                    text: "El proceso de auditoría gratuita fue el punto de partida. Nos mostraron exactamente dónde estábamos perdiendo dinero y cómo su software lo resolvería.",
+                    text: "El proceso de diagnóstico gratuito fue el punto de partida. Nos mostraron exactamente dónde estábamos perdiendo dinero y cómo su software lo resolvería.",
                     author: "Andrés Silva",
                     role: "Fundador de TechSolutions",
                     avatar: "AS"
@@ -549,8 +549,8 @@ export const dictionaries = {
             ]
         },
         about: {
-            title: "Sobre Nextrova",
-            p1: "En Nextrova, no solo escribimos código; construimos los cimientos tecnológicos sobre los cuales escalan las empresas modernas.",
+            title: "Sobre Systrategy",
+            p1: "En Systrategy, no solo escribimos código; construimos los cimientos tecnológicos sobre los cuales escalan las empresas modernas.",
             p2: "Nacimos con la visión de democratizar el software empresarial de alta gama. Creemos que cada negocio merece una arquitectura robusta, segura y, sobre todo, que **evolucione** al mismo ritmo que sus metas.",
             mission: {
                 title: "Misión",
@@ -562,11 +562,11 @@ export const dictionaries = {
             }
         },
         footer: {
-            rights: "© 2026 Nextrova Software Services. Todos los derechos reservados.",
+            rights: "© 2026 Systrategy — Software Inteligente y Visual. Diseñado para ser Intuitivo.",
         },
         dashboard: {
             sidebar: {
-                title: "Nextrova",
+                title: "Systrategy",
                 commandCenter: "Centro de Mando",
                 reports: "Reportes",
                 users: "Usuarios",
@@ -691,8 +691,8 @@ export const dictionaries = {
         // ======== Auditoría Translations ========
         auditoria: {
             form: {
-                badge: "Diagnóstico Gratuito",
-                title: "Auditoría Técnica",
+                badge: "Diagnóstico Digital",
+                title: "Diagnóstico Digital Gratuito",
                 description: "Completa este formulario rápido enfocado en identificar el problema de tu operativa y descubre cómo un sistema a medida puede escalar tu negocio.",
                 backToHome: "Volver al Inicio",
                 sections: {
@@ -758,12 +758,12 @@ export const dictionaries = {
                         phoneNote: "Incluye tu código de país para facilitar el contacto directo."
                     }
                 },
-                submit: "Solicitar Auditoría Gratuita",
+                submit: "Quiero mi Diagnóstico Gratis →",
                 loading: "Procesando solicitud...",
-                encryptionNote: "Tus datos están encriptados y protegidos por Nextrova."
+                encryptionNote: "Tus datos están encriptados y protegidos por Systrategy."
             },
             success: {
-                title: "¡Auditoría Solicitada!",
+                title: "¡Diagnóstico Solicitado!",
                 received: "Hemos recibido tus respuestas correctamente.",
                 nextStepTitle: "Próximo paso:",
                 nextStepDesc: "Nuestro equipo analizará tu caso y nos contactaremos contigo vía ",

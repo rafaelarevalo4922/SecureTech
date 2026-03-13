@@ -40,8 +40,12 @@ export function AboutSection() {
                         className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-brand-600/20 to-purple-600/20 z-10" />
-                        <div className="flex items-center justify-center h-full bg-secondary/50 border border-border">
-                            <span className="font-outfit text-6xl font-black text-brand-500/20 italic">NEXTROVA</span>
+                        <div className="flex items-center justify-center h-full bg-secondary/50 border border-border p-8">
+                            <img 
+                                src="/logoSystrategy.png" 
+                                alt="Systrategy Full Logo" 
+                                className="max-h-full max-w-full object-contain"
+                            />
                         </div>
                     </motion.div>
                 </div>

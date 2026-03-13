@@ -139,7 +139,7 @@ export default function AuditoriaTable({ responses }: AuditoriaTableProps) {
                                                     <Eye className="w-4 h-4" />
                                                 </button>
                                                 <a
-                                                    href={`mailto:${response.contact_email}?subject=Nextrova - Contacto Comercial`}
+                                                    href={`mailto:${response.contact_email}?subject=Systrategy - Contacto Comercial`}
                                                     className="p-2 bg-slate-800 hover:bg-emerald-500/20 text-slate-400 hover:text-emerald-400 rounded-lg transition-all"
                                                     title={t.auditoria?.dashboard?.table?.email}
                                                 >

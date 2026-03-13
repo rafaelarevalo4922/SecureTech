@@ -5,21 +5,28 @@ import { X, Gift } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
+const SESSION_KEY = "systrategy_popup_shown";
+
 export function ExitIntentPopup() {
     const [isVisible, setIsVisible] = useState(false);
-    const [hasShown, setHasShown] = useState(false);
 
     useEffect(() => {
-        const handleMouseLeave = (e: MouseEvent) => {
-            if (e.clientY <= 0 && !hasShown) {
-                setIsVisible(true);
-                setHasShown(true);
-            }
-        };
+        // Only show if not already shown in this session
+        const alreadyShown = sessionStorage.getItem(SESSION_KEY);
+        if (alreadyShown) return;
 
-        document.addEventListener("mouseleave", handleMouseLeave);
-        return () => document.removeEventListener("mouseleave", handleMouseLeave);
-    }, [hasShown]);
+        // Show after 1 minute (60000ms)
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+            sessionStorage.setItem(SESSION_KEY, "1");
+        }, 60000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    const handleClose = () => {
+        setIsVisible(false);
+    };
 
     if (!isVisible) return null;
 
@@ -33,7 +40,7 @@ export function ExitIntentPopup() {
                     className="relative bg-card border border-brand-500/30 rounded-2xl p-8 max-w-md w-full shadow-2xl"
                 >
                     <button
-                        onClick={() => setIsVisible(false)}
+                        onClick={handleClose}
                         className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
                     >
                         <X className="h-5 w-5" />
@@ -45,20 +52,20 @@ export function ExitIntentPopup() {
                         </div>
 
                         <div>
-                            <h2 className="font-outfit text-2xl font-bold">¡No te vayas sin tu auditoría!</h2>
-                            <p className="mt-2 text-muted-foreground">Solo quedan <span className="text-brand-500 font-bold">3 espacios disponibles</span> para esta semana. Asegura el tuyo ahora mismo.</p>
+                            <h2 className="font-outfit text-2xl font-bold">¡No te vayas sin tu Diagnóstico!</h2>
+                            <p className="mt-2 text-muted-foreground">Solo quedan <span className="text-brand-500 font-bold">5 espacios disponibles</span> para esta semana. Asegura el tuyo ahora mismo.</p>
                         </div>
 
                         <Link
                             href="/auditoria"
-                            onClick={() => setIsVisible(false)}
-                            className="w-full py-4 bg-brand-500 text-white rounded-xl font-bold hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/30"
+                            onClick={handleClose}
+                            className="w-full py-4 bg-brand-500 text-white rounded-xl font-bold hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/30 text-center"
                         >
-                            Agendar Auditoría Gratis
+                            Agenda tu Diagnóstico Gratis — Solo 5 espacios
                         </Link>
 
                         <button
-                            onClick={() => setIsVisible(false)}
+                            onClick={handleClose}
                             className="text-sm text-muted-foreground hover:underline"
                         >
                             Quizás en otro momento

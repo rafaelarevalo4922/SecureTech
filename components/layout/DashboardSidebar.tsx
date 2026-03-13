@@ -164,12 +164,10 @@ export default function DashboardSidebar() {
 
             {/* Sidebar */}
             <aside className={`fixed inset-y-0 left-0 w-64 bg-slate-950/95 backdrop-blur-3xl border-r border-white/10 flex flex-col z-50 transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
-                <div className="h-20 flex items-center px-6 border-b border-white/5">
+                <div className="h-28 flex items-center px-6 border-b border-white/5">
                     <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                            <ShieldCheck className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="font-bold text-xl font-outfit text-white tracking-tight">{t.dashboard.sidebar.title}</span>
+                        <img src="/logo.png" alt="Systrategy Logo" className="w-20 h-25 object-contain" />
+                        <span className="font-bold text-xl font-outfit text-white tracking-tight">Systrategy</span>
                     </div>
                 </div>
 

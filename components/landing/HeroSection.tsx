@@ -26,10 +26,10 @@ export function HeroSection() {
                     {t.hero.title1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-brand-300">{t.hero.title2}</span>
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-                    {t.hero.subtitle}
+                    Tu negocio más ordenado, automatizado y seguro — sin complicaciones técnicas.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-                    <Link href="#quote" className="inline-flex items-center justify-center rounded-md bg-brand-600 px-8 py-3 text-sm font-medium text-white hover:bg-brand-500 transition-colors shadow-lg shadow-brand-500/20">
+                    <Link href="/auditoria" className="inline-flex items-center justify-center rounded-md bg-brand-600 px-8 py-3 text-sm font-medium text-white hover:bg-brand-500 transition-colors shadow-lg shadow-brand-500/20">
                         {t.hero.ctaPrimary}
                         <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>

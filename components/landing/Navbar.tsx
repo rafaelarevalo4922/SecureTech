@@ -1,18 +1,21 @@
 "use client";
 
 import { useLanguage } from '@/lib/i18n/LanguageContext';
-import { ShieldCheck, LogOut, LayoutDashboard } from "lucide-react";
+import { LogOut, LayoutDashboard, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { useLogout } from '@/components/auth/useLogout';
+import Image from "next/image";
 
 export function Navbar() {
     const { t } = useLanguage();
     const [user, setUser] = useState<any>(null);
     const { logout } = useLogout();
     const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const supabase = createClient();
@@ -69,33 +72,124 @@ export function Navbar() {
             )}
             <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
                 <Link href="/" className="flex items-center gap-2 font-outfit text-xl font-bold">
-                    <ShieldCheck className="h-6 w-6 text-brand-500" />
-                    <span>Nextrova</span>
+                    <img src="/logo.png" alt="Systrategy Logo" className="h-20 w-25 object-contain" />
+                    <span>Systrategy</span>
                 </Link>
-                <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+                <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
                     <Link href="#features" className="text-muted-foreground hover:text-foreground transition-colors">{t.nav.features}</Link>
                     <Link href="#solutions" className="text-muted-foreground hover:text-foreground transition-colors">{t.nav.solutions}</Link>
                     <Link href="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">{t.nav.dashboards}</Link>
                     <LanguageSwitcher />
                 </nav>
                 <div className="flex items-center gap-4">
-                    {user ? (
-                        <>
-                            <Link href="/dashboard" className="hidden sm:flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground">
-                                <LayoutDashboard className="w-4 h-4" />
-                                Panel
-                            </Link>
-                            <button onClick={() => setShowLogoutConfirm(true)} className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-400">
-                                <LogOut className="w-4 h-4" />
-                                Salir
-                            </button>
-                        </>
-                    ) : (
-                        <Link href="/login" className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground">{t.nav.login}</Link>
-                    )}
-                    <Link href="/auditoria" className="text-sm font-medium bg-foreground text-background px-4 py-2 rounded-md hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/20">{t.nav.getStarted}</Link>
+                    <div className="hidden md:flex items-center gap-4">
+                        {user ? (
+                            <>
+                                <Link href="/dashboard" className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground">
+                                    <LayoutDashboard className="w-4 h-4" />
+                                    Panel
+                                </Link>
+                                <button onClick={() => setShowLogoutConfirm(true)} className="inline-flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-400">
+                                    <LogOut className="w-4 h-4" />
+                                    Salir
+                                </button>
+                            </>
+                        ) : (
+                            <Link href="/login" className="text-sm font-medium text-muted-foreground hover:text-foreground">{t.nav.login}</Link>
+                        )}
+                        <Link href="/auditoria" className="text-sm font-medium bg-foreground text-background px-4 py-2 rounded-md hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/20">{t.nav.getStarted}</Link>
+                    </div>
+                    
+                    {/* Mobile Menu Toggle */}
+                    <button 
+                        className="lg:hidden p-2 text-foreground"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                        {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    </button>
                 </div>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="lg:hidden border-t border-border bg-background/98 backdrop-blur overflow-hidden"
+                    >
+                        <div className="container mx-auto px-4 py-8 flex flex-col gap-6">
+                            <Link 
+                                href="#features" 
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-lg font-medium text-foreground hover:text-brand-500 transition-colors"
+                            >
+                                {t.nav.features}
+                            </Link>
+                            <Link 
+                                href="#solutions" 
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-lg font-medium text-foreground hover:text-brand-500 transition-colors"
+                            >
+                                {t.nav.solutions}
+                            </Link>
+                            <Link 
+                                href="/dashboard" 
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-lg font-medium text-foreground hover:text-brand-500 transition-colors"
+                            >
+                                {t.nav.dashboards}
+                            </Link>
+                            
+                            <div className="h-px bg-border w-full my-2" />
+                            
+                            <div className="flex flex-col gap-4">
+                                {user ? (
+                                    <>
+                                        <Link 
+                                            href="/dashboard" 
+                                            onClick={() => setIsMenuOpen(false)}
+                                            className="flex items-center gap-2 text-lg font-medium text-foreground"
+                                        >
+                                            <LayoutDashboard className="w-5 h-5" />
+                                            Panel
+                                        </Link>
+                                        <button 
+                                            onClick={() => {
+                                                setIsMenuOpen(false);
+                                                setShowLogoutConfirm(true);
+                                            }} 
+                                            className="flex items-center gap-2 text-lg font-medium text-red-500"
+                                        >
+                                            <LogOut className="w-5 h-5" />
+                                            Salir
+                                        </button>
+                                    </>
+                                ) : (
+                                    <Link 
+                                        href="/login" 
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-lg font-medium text-foreground"
+                                    >
+                                        {t.nav.login}
+                                    </Link>
+                                )}
+                                <Link 
+                                    href="/auditoria" 
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="w-full text-center py-4 bg-foreground text-background rounded-xl font-bold text-lg shadow-xl shadow-brand-500/20"
+                                >
+                                    {t.nav.getStarted}
+                                </Link>
+                                <div className="flex justify-start">
+                                    <LanguageSwitcher />
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
 }

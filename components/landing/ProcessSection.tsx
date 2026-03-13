@@ -12,29 +12,29 @@ export const ProcessSection = () => {
         {
             id: "01",
             icon: <Search className="w-8 h-8 text-blue-500" />,
-            title: "1. Cuéntanos qué necesitas",
-            desc: "Selecciona los módulos que tu negocio requiere usando nuestro formulario rápido.",
+            title: t.steps.s1Title,
+            desc: t.steps.s1Desc,
             color: "blue"
         },
         {
             id: "02",
             icon: <FileText className="w-8 h-8 text-purple-500" />,
-            title: "2. Auditoría Gratuita",
-            desc: "Revisamos tus procesos actuales y te entregamos una hoja de ruta de mejora gratis.",
+            title: t.steps.s2Title,
+            desc: t.steps.s2Desc,
             color: "purple"
         },
         {
             id: "03",
             icon: <CheckCircle2 className="w-8 h-8 text-emerald-500" />,
-            title: "3. Propuesta a Medida",
-            desc: "Recibe un plan adaptado y precios para tu nueva arquitectura de software.",
+            title: t.steps.s3Title,
+            desc: t.steps.s3Desc,
             color: "emerald"
         },
         {
             id: "04",
             icon: <Rocket className="w-8 h-8 text-orange-500" />,
-            title: "4. Lanza y Escala",
-            desc: "Construimos, desplegamos y mantenemos tu sistema mientras te enfocas en crecer.",
+            title: t.steps.s4Title,
+            desc: t.steps.s4Desc,
             color: "orange"
         }
     ];
@@ -94,7 +94,7 @@ export const ProcessSection = () => {
                         href="/auditoria"
                         className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-blue-500/20 group"
                     >
-                        Comienza tu Auditoría Gratis
+                        Agenda tu Diagnóstico Gratis — Solo 5 espacios
                         <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>

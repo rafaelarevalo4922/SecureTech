@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export function FAQSection() {
     const faqs = [
         {
-            q: "¿Cuánto tiempo toma desarrollar un sistema a medida?",
+            q: "¿En cuánto tiempo veo resultados reales?",
             a: "Dependiendo de la complejidad, un MVP (Producto Mínimo Viable) suele estar listo en 4 a 6 semanas. Proyectos corporativos más grandes pueden tomar de 3 a 6 meses."
         },
         {
@@ -15,11 +15,11 @@ export function FAQSection() {
             a: "Ofrecemos ambos modelos. Puedes optar por una licencia perpetua con pago único o un modelo de Software como Servicio (SaaS) con mantenimiento mensual incluido."
         },
         {
-            q: "¿Qué sucede si necesito más funciones en el futuro?",
+            q: "¿Puedo agregar funciones en el futuro sin romper todo?",
             a: "Nuestro software está diseñado para ser modular. Podemos agregar nuevos módulos o integrar APIs adicionales en cualquier momento sin afectar la arquitectura base."
         },
         {
-            q: "¿Ofrecen soporte técnico después del lanzamiento?",
+            q: "¿Tienen soporte técnico después del lanzamiento?",
             a: "Sí, todos nuestros planes incluyen un periodo de garantía y soporte técnico. También ofrecemos planes de mantenimiento preventivo y correctivo 24/7."
         }
     ];

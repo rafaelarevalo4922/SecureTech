@@ -137,13 +137,13 @@ export default function AuditoriaFormPage() {
                 <div className="text-center mb-10">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-4">
                         <CheckCircle2 className="w-4 h-4" />
-                        {t.auditoria?.form?.badge || 'Free Audit'}
+                        {t.auditoria?.form?.badge || 'Diagnóstico Gratuito'}
                     </div>
                     <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
-                        {t.auditoria?.form?.title || 'Auditoría'} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Técnica</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Diagnóstico</span> Digital Gratuito
                     </h1>
                     <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                        {t.auditoria?.form?.description || 'Complete this quick form...'}
+                        {t.auditoria?.form?.description || 'Completa este formulario rápido para identificar tus puntos de dolor y descubrir cómo un sistema a medida puede escalar tu negocio.'}
                     </p>
                 </div>
 
@@ -438,7 +438,7 @@ export default function AuditoriaFormPage() {
                                             className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white transition-all outline-none placeholder:text-slate-600"
                                         />
                                     </div>
-                                    <p className="text-[10px] text-slate-500 mt-2 ml-1">Tu información está protegida por encriptación Nextrova.</p>
+                                    <p className="text-[10px] text-slate-500 mt-2 ml-1">Tu información está protegida por encriptación Systrategy.</p>
                                 </div>
                             </div>
                         </div>
@@ -460,13 +460,13 @@ export default function AuditoriaFormPage() {
                                 ) : (
                                     <div className="flex items-center gap-3 relative z-10 text-lg">
                                         <CheckCircle2 className="w-6 h-6" />
-                                        <span>Solicitar Auditoría Gratuita</span>
+                                        <span>Quiero mi Diagnóstico Gratis →</span>
                                     </div>
                                 )}
                             </button>
                             <p className="text-center text-sm text-slate-500 mt-6 flex justify-center items-center gap-2">
                                 <ShieldCheck className="w-4 h-4" />
-                                Tus datos están encriptados y protegidos por Nextrova.
+                                Tus datos están encriptados y protegidos por Systrategy.
                             </p>
                         </div>
                     </form>

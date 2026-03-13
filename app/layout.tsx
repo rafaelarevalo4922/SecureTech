@@ -9,7 +9,7 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 export const metadata: Metadata = {
-    title: "Nextrova | Software a medida para empresas",
+    title: "Systrategy | Software a medida para empresas",
     description: "Desarrollamos software que evoluciona con tu negocio. Sistemas robustos, seguros y escalables.",
 };
 

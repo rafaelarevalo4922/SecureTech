@@ -2,7 +2,6 @@
 
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { ServerActionForm } from './ServerActionForm'
-import { OAuthButtons } from '@/components/auth/OAuthButtons'
 import Link from 'next/link'
 import { Lock, Mail, ShieldCheck, ArrowRight, Globe, ArrowLeft } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
@@ -46,8 +45,8 @@ function LoginContent() {
                 <div className="bg-[#0f172a]/80 backdrop-blur-2xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] rounded-[40px] p-8 md:p-10 relative overflow-hidden">
                     {/* Top Icon Area */}
                     <div className="flex flex-col items-center mb-8 text-center">
-                        <div className="w-16 h-16 bg-blue-500/10 rounded-[24px] flex items-center justify-center mb-4 border border-blue-500/20 shadow-[0_0_40px_rgba(59,130,246,0.15)] transform hover:rotate-6 transition-transform">
-                            <Lock className="w-8 h-8 text-blue-400" />
+                        <div className="mb-4 transform hover:rotate-6 transition-transform">
+                            <img src="/logo.png" alt="Systrategy Logo" className="h-20 w-24 object-contain" />
                         </div>
                         <h1 className="text-3xl font-extrabold text-white tracking-tight mb-1">{t.auth.login.title}</h1>
                         <p className="text-slate-400 text-xs font-medium">{t.auth.login.subtitle}</p>
@@ -67,7 +66,7 @@ function LoginContent() {
                                         className="block w-full pl-12 pr-4 py-3.5 bg-black/40 border border-white/10 rounded-2xl text-white placeholder-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/40 transition-all shadow-inner text-sm"
                                         name="email"
                                         type="email"
-                                        placeholder="admin@yourcompany.com"
+                                        placeholder="admin@systrategy.com"
                                         required
                                     />
                                 </div>
@@ -110,19 +109,6 @@ function LoginContent() {
                             </div>
                         )}
                     </ServerActionForm>
-
-                    <div className="mt-8 relative">
-                        <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-white/5"></div>
-                        </div>
-                        <div className="relative flex justify-center text-[9px] uppercase tracking-[0.3em] font-black">
-                            <span className="bg-[#0f172a] px-4 text-slate-600">{t.auth.login.footer}</span>
-                        </div>
-                    </div>
-
-                    <div className="mt-6">
-                        <OAuthButtons />
-                    </div>
                 </div>
 
                 <div className="mt-8 text-center flex flex-col items-center gap-3">

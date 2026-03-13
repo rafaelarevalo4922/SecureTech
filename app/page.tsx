@@ -13,7 +13,6 @@ import { ProcessSection } from "@/components/landing/ProcessSection";
 import { WhatsAppButton } from "@/components/landing/WhatsAppButton";
 import { ExitIntentPopup } from "@/components/landing/ExitIntentPopup";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { ShieldCheck } from "lucide-react";
 
 export default function Home() {
     const { t } = useLanguage();
@@ -23,8 +22,8 @@ export default function Home() {
             <Navbar />
             <HeroSection />
             <StatsSection />
-            <DashboardPreviewSection />
             <ProcessSection />
+            <DashboardPreviewSection />
             <ServicesSection />
             <AboutSection />
             <PortfolioSection />
@@ -36,10 +35,8 @@ export default function Home() {
             <footer className="border-t border-border py-12 px-4 md:px-8 bg-card">
                 <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-2 font-outfit text-xl font-bold">
-                        <div className="h-8 w-8 rounded-full overflow-hidden border-2 border-slate-700 cursor-pointer">
-                            <img src="https://i.pravatar.cc/150?u=admin" className="w-full h-full object-cover" alt="Admin" />
-                        </div>
-                        <span>Nextrova</span>
+                        <img src="/logo.png" alt="Systrategy Logo" className="h-20 w-25 object-contain" />
+                        <span>Systrategy</span>
                     </div>
                     <p className="text-muted-foreground text-sm text-center md:text-left">
                         {t.footer.rights}

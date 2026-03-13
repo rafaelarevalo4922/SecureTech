@@ -2,9 +2,8 @@
 
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { ServerActionForm } from '../login/ServerActionForm'
-import { OAuthButtons } from '@/components/auth/OAuthButtons'
 import Link from 'next/link'
-import { ShieldCheck, Mail, Lock, ArrowRight, Rocket, MousePointer2, Database, Globe, ArrowLeft } from 'lucide-react'
+import { ShieldCheck, Mail, Lock, ArrowRight, Rocket, Database, Globe, ArrowLeft } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { signUp } from './registerActions'
 import { Suspense } from 'react'
@@ -46,8 +45,8 @@ function RegisterContent() {
 
                 <div className="relative z-10 max-w-lg">
                     <Link href="/" className="inline-flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
-                        <ShieldCheck className="w-8 h-8 text-blue-500" />
-                        <span className="text-2xl font-black text-white tracking-tighter uppercase italic">SecureTech</span>
+                        <img src="/logo.png" alt="Systrategy Logo" className="w-20 h-25 object-contain" />
+                        <span className="text-2xl font-black text-white tracking-tighter uppercase italic">Systrategy</span>
                     </Link>
 
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
@@ -175,19 +174,6 @@ function RegisterContent() {
                             </div>
                         )}
                     </ServerActionForm>
-
-                    <div className="mt-8 relative">
-                        <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-white/5"></div>
-                        </div>
-                        <div className="relative flex justify-center text-[9px] uppercase tracking-[0.3em] font-black">
-                            <span className="bg-black px-4 text-slate-600">{t.auth.register.quickAccess}</span>
-                        </div>
-                    </div>
-
-                    <div className="mt-6">
-                        <OAuthButtons />
-                    </div>
 
                     <div className="mt-10 text-center">
                         <p className="text-slate-500 text-[10px] font-medium uppercase tracking-widest">
