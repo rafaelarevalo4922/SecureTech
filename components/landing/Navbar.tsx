@@ -73,7 +73,7 @@ export function Navbar() {
             <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
                 <Link href="/" className="flex items-center gap-2 font-outfit text-xl font-bold">
                     <img src="/logo.png" alt="Systrategy Logo" className="h-20 w-25 object-contain" />
-                    <span>Systrategy</span>
+                    <img src="/systrategy-text.svg" alt="Systrategy" className="h-10 object-contain" />
                 </Link>
                 <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
                     <Link href="#features" className="text-muted-foreground hover:text-foreground transition-colors">{t.nav.features}</Link>
@@ -99,9 +99,9 @@ export function Navbar() {
                         )}
                         <Link href="/auditoria" className="text-sm font-medium bg-foreground text-background px-4 py-2 rounded-md hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/20">{t.nav.getStarted}</Link>
                     </div>
-                    
+
                     {/* Mobile Menu Toggle */}
-                    <button 
+                    <button
                         className="lg:hidden p-2 text-foreground"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
@@ -120,46 +120,46 @@ export function Navbar() {
                         className="lg:hidden border-t border-border bg-background/98 backdrop-blur overflow-hidden"
                     >
                         <div className="container mx-auto px-4 py-8 flex flex-col gap-6">
-                            <Link 
-                                href="#features" 
+                            <Link
+                                href="#features"
                                 onClick={() => setIsMenuOpen(false)}
                                 className="text-lg font-medium text-foreground hover:text-brand-500 transition-colors"
                             >
                                 {t.nav.features}
                             </Link>
-                            <Link 
-                                href="#solutions" 
+                            <Link
+                                href="#solutions"
                                 onClick={() => setIsMenuOpen(false)}
                                 className="text-lg font-medium text-foreground hover:text-brand-500 transition-colors"
                             >
                                 {t.nav.solutions}
                             </Link>
-                            <Link 
-                                href="/dashboard" 
+                            <Link
+                                href="/dashboard"
                                 onClick={() => setIsMenuOpen(false)}
                                 className="text-lg font-medium text-foreground hover:text-brand-500 transition-colors"
                             >
                                 {t.nav.dashboards}
                             </Link>
-                            
+
                             <div className="h-px bg-border w-full my-2" />
-                            
+
                             <div className="flex flex-col gap-4">
                                 {user ? (
                                     <>
-                                        <Link 
-                                            href="/dashboard" 
+                                        <Link
+                                            href="/dashboard"
                                             onClick={() => setIsMenuOpen(false)}
                                             className="flex items-center gap-2 text-lg font-medium text-foreground"
                                         >
                                             <LayoutDashboard className="w-5 h-5" />
                                             Panel
                                         </Link>
-                                        <button 
+                                        <button
                                             onClick={() => {
                                                 setIsMenuOpen(false);
                                                 setShowLogoutConfirm(true);
-                                            }} 
+                                            }}
                                             className="flex items-center gap-2 text-lg font-medium text-red-500"
                                         >
                                             <LogOut className="w-5 h-5" />
@@ -167,16 +167,16 @@ export function Navbar() {
                                         </button>
                                     </>
                                 ) : (
-                                    <Link 
-                                        href="/login" 
+                                    <Link
+                                        href="/login"
                                         onClick={() => setIsMenuOpen(false)}
                                         className="text-lg font-medium text-foreground"
                                     >
                                         {t.nav.login}
                                     </Link>
                                 )}
-                                <Link 
-                                    href="/auditoria" 
+                                <Link
+                                    href="/auditoria"
                                     onClick={() => setIsMenuOpen(false)}
                                     className="w-full text-center py-4 bg-foreground text-background rounded-xl font-bold text-lg shadow-xl shadow-brand-500/20"
                                 >

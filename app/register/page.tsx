@@ -46,7 +46,7 @@ function RegisterContent() {
                 <div className="relative z-10 max-w-lg">
                     <Link href="/" className="inline-flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
                         <img src="/logo.png" alt="Systrategy Logo" className="w-20 h-25 object-contain" />
-                        <span className="text-2xl font-black text-white tracking-tighter uppercase italic">Systrategy</span>
+                        <img src="/systrategy-text.svg" alt="Systrategy" className="h-10 object-contain" />
                     </Link>
 
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">

@@ -166,8 +166,8 @@ export default function DashboardSidebar() {
             <aside className={`fixed inset-y-0 left-0 w-64 bg-slate-950/95 backdrop-blur-3xl border-r border-white/10 flex flex-col z-50 transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
                 <div className="h-28 flex items-center px-6 border-b border-white/5">
                     <div className="flex items-center gap-3">
-                        <img src="/logo.png" alt="Systrategy Logo" className="w-20 h-25 object-contain" />
-                        <span className="font-bold text-xl font-outfit text-white tracking-tight">Systrategy</span>
+                        <img src="/logo.png" alt="Systrategy Logo" className="w-20 h-10 object-contain" />
+                        <img src="/systrategy-text.svg" alt="Systrategy" className="h-8 object-contain" />
                     </div>
                 </div>
 

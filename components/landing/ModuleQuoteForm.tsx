@@ -9,6 +9,7 @@ export function ModuleQuoteForm() {
     const { t } = useLanguage();
     const [selectedModules, setSelectedModules] = useState<string[]>([]);
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [submitted, setSubmitted] = useState(false);
 
     const modules = [
@@ -25,11 +26,19 @@ export function ModuleQuoteForm() {
         );
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (email && selectedModules.length > 0) {
+        if (email && phone && selectedModules.length > 0) {
             setSubmitted(true);
-            // Here you would typically send data to an API
+            try {
+                await fetch('/api/quote', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, phone, modules: selectedModules }),
+                });
+            } catch (error) {
+                console.error("Failed to submit quote:", error);
+            }
         }
     };
 
@@ -51,7 +60,12 @@ export function ModuleQuoteForm() {
                             <Check className="h-8 w-8 text-white" />
                         </div>
                         <h3 className="text-2xl font-bold mb-2">{t.quote.success}</h3>
-                        <p className="text-muted-foreground">We have received your request for: {selectedModules.join(', ')}</p>
+                        <p className="text-muted-foreground mb-4">
+                            Hemos recibido tu formulario correctamente. Nuestro equipo ya se encuentra analizando tu solicitud y evaluando los módulos seleccionados ({selectedModules.join(', ')}).
+                        </p>
+                        <p className="text-brand-500 text-sm font-medium">
+                            Nos pondremos en contacto contigo a la brevedad posible para agendar una revisión técnica.
+                        </p>
                     </motion.div>
                 ) : (
                     <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-6 md:p-10 shadow-lg">
@@ -89,9 +103,20 @@ export function ModuleQuoteForm() {
                                     className="w-full bg-background border border-border rounded-lg py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-shadow"
                                 />
                             </div>
+                            <div className="relative flex-1">
+                                <div className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground flex items-center justify-center">📱</div>
+                                <input
+                                    type="tel"
+                                    required
+                                    placeholder="WhatsApp (ej. +591...)"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    className="w-full bg-background border border-border rounded-lg py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-shadow"
+                                />
+                            </div>
                             <button
                                 type="submit"
-                                disabled={selectedModules.length === 0 || !email}
+                                disabled={selectedModules.length === 0 || !email || !phone}
                                 className="bg-brand-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-brand-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                             >
                                 {t.quote.submit}

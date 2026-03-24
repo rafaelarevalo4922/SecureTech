@@ -36,7 +36,7 @@ export default function Home() {
                 <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-2 font-outfit text-xl font-bold">
                         <img src="/logo.png" alt="Systrategy Logo" className="h-20 w-25 object-contain" />
-                        <span>Systrategy</span>
+                        <img src="/systrategy-text.svg" alt="Systrategy" className="h-10 object-contain" />
                     </div>
                     <p className="text-muted-foreground text-sm text-center md:text-left">
                         {t.footer.rights}
