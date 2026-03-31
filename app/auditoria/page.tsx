@@ -99,6 +99,13 @@ export default function AuditoriaFormPage() {
             console.error("Insert error:", insertError)
             setError('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.')
         } else {
+            // Send emails (best-effort, doesn't block redirect)
+            fetch('/api/diagnostic', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(auditData),
+            }).catch(err => console.error('Email error (non-blocking):', err))
+
             router.push('/auditoria/success')
         }
     }
